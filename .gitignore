@@ -1,0 +1,11 @@
+# Caches / venv
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Si tu mets le repo en PUBLIC, dé-commente ces lignes pour NE PAS publier
+# la base de contacts (emails de personnes réelles = RGPD) :
+# data/*.db
+# exports/
+# emailing/data/raps_contacts_master.csv
