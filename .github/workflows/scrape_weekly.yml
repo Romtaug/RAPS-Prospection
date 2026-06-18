@@ -1,0 +1,42 @@
+name: "🧹 RAPS - Scrape hebdo (Rhône)"
+
+on:
+  schedule:
+    - cron: "0 6 * * 0"
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Volumes réduits ?"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+      - name: Scrape immo + notaires
+        env:
+          RAPS_TEST: ${{ github.event.inputs.test_mode }}
+        run: python scrape_raps.py
+      - name: Build master (filtre Rhône 69)
+        run: python build_master_raps.py
+      - name: Commit data
+        run: |
+          git config user.name  "RAPS Bot"
+          git config user.email "bot@raps-services-nettoyage.fr"
+          git add data/ exports/ emailing/data/raps_contacts_master.csv 2>/dev/null || true
+          git diff --cached --quiet && echo "Rien a committer" && exit 0
+          git commit -m "scrape hebdo $(date -u +%Y-%m-%d)"
+          git push
