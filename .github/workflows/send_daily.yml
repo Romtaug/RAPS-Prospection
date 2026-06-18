@@ -1,0 +1,56 @@
+name: "📧 RAPS - Envoi quotidien"
+
+on:
+  schedule:
+    - cron: "50 5 * * 1-6"
+  workflow_dispatch:
+    inputs:
+      daily_limit:
+        description: "Emails à envoyer (défaut 80)"
+        required: false
+        default: "80"
+      dry_run:
+        description: "Dry run ?"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: raps-send
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Envoi MASS
+        env:
+          SEND_MODE: "MASS"
+          DAILY_LIMIT: ${{ github.event.inputs.daily_limit || '80' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          SMTP_LOGIN: ${{ secrets.SMTP_LOGIN }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: python emailing/send_raps.py
+      - name: Commit tracking
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name  "RAPS Bot"
+          git config user.email "bot@raps-services-nettoyage.fr"
+          git add emailing/data/raps_contacts_master.csv 2>/dev/null || true
+          git diff --cached --quiet && echo "Rien a committer" && exit 0
+          git commit -m "envoi $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do
+            git push origin main && exit 0
+            git pull --rebase --autostash origin main || exit 1
+            sleep $((RANDOM % 8 + 3))
+          done
+          exit 1
