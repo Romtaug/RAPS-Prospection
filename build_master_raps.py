@@ -1,19 +1,7 @@
 """
-╔══════════════════════════════════════════════════════════════════╗
-║   R.A.P.S. SERVICES - BUILD MASTER (nettoyage, Lyon / Rhône 69)   ║
-╠══════════════════════════════════════════════════════════════════╣
-║  Fusionne les exports immo + notaires → master CSV de prospection ║
-║  en NE GARDANT QUE le Rhône (69) - une boîte de nettoyage est     ║
-║  locale, inutile de mailer toute la France.                       ║
-║                                                                   ║
-║   - filtre géo : notaires département = Rhône ; immo adresse      ║
-║     contenant un code postal 69xxx ou une ville de la métropole   ║
-║   - dédup cross-bases (un email = une fois, rank le plus haut)    ║
-║   - tracking PRÉSERVÉ entre les runs (qui a déjà été contacté)    ║
-║   - contacts disparus des exports = conservés (historique)        ║
-║                                                                   ║
-║  Usage : python build_master_raps.py                              ║
-╚══════════════════════════════════════════════════════════════════╝
+R.A.P.S. SERVICES - BUILD MASTER (nettoyage, Lyon / Rhône 69)
+Fusionne les exports immo + notaires -> master CSV, en NE GARDANT QUE le 69.
+Ajoute le téléphone. Tracking préservé entre les runs.
 """
 
 import csv
@@ -25,8 +13,6 @@ BASE_DIR = Path(__file__).resolve().parent
 EXPORTS_DIR = BASE_DIR / "exports"
 MASTER_PATH = BASE_DIR / "emailing" / "data" / "raps_contacts_master.csv"
 
-# ── Filtre géographique : Rhône (69) ────────────────────────────────
-# Code postal 69xxx  +  principales communes de la métropole de Lyon.
 CP_RHONE = re.compile(r"\b69\d{3}\b")
 VILLES_RHONE = {
     "lyon", "villeurbanne", "venissieux", "vénissieux", "caluire", "bron",
@@ -57,19 +43,16 @@ def _in_rhone_immo(row: dict) -> bool:
     return any(v in adresse for v in VILLES_RHONE)
 
 
-# ── Sources : (vertical, fichier, col_email, cols_extra, col_company,
-#               col_city, rank, filtre_geo) ───────────────────────────
-#  rank = priorité d'envoi (plus haut = envoyé en premier).
-#  Notaires d'abord : angle successions / débarras très fort pour RAPS.
+# (vertical, fichier, col_email, cols_extra, col_company, col_city, col_phone, rank, filtre)
 SOURCES = [
     ("notaires", "notaires/annuaire_notaires_france.csv",
-     "email", ["emails_all"], "office", "city", 6, _in_rhone_notaire),
+     "email", ["emails_all"], "office", "city", "phone", 6, _in_rhone_notaire),
     ("immo", "immo/base_prospection_immomatin.csv",
-     "email_principal", ["emails_trouves"], "nom", None, 5, _in_rhone_immo),
+     "email_principal", ["emails_trouves"], "nom", None, "telephone_principal", 5, _in_rhone_immo),
 ]
 
 FIELDNAMES = [
-    "email", "vertical", "company", "city", "score_source_rank",
+    "email", "vertical", "company", "city", "phone", "score_source_rank",
     "email_sent", "sent_at", "send_status", "send_attempts",
     "last_error", "last_subject", "created_at", "updated_at",
 ]
@@ -104,19 +87,18 @@ def _emails_from(value) -> list[str]:
 
 
 def collect_prospects() -> dict[str, dict]:
-    """Lit les 2 exports, filtre Rhône, dédup cross-bases (rank gagnant)."""
     prospects: dict[str, dict] = {}
-    for vertical, rel, col_email, cols_extra, col_company, col_city, rank, geo in SOURCES:
+    for vertical, rel, col_email, cols_extra, col_company, col_city, col_phone, rank, geo in SOURCES:
         path = EXPORTS_DIR / rel
         if not path.exists():
-            print(f"⚠️  {vertical:<10} : export absent ({rel}) - ignoré")
+            print(f"!! {vertical:<10} : export absent ({rel}) - ignore")
             continue
         n_rows = n_geo = n_kept = 0
         with path.open("r", newline="", encoding="utf-8-sig") as fh:
             for row in csv.DictReader(fh):
                 n_rows += 1
                 if not geo(row):
-                    continue          # hors Rhône → on jette
+                    continue
                 n_geo += 1
                 emails = _emails_from(row.get(col_email))
                 for c in cols_extra:
@@ -132,11 +114,11 @@ def collect_prospects() -> dict[str, dict]:
                         "vertical": vertical,
                         "company": _clean(row.get(col_company)) if col_company else "",
                         "city": _clean(row.get(col_city)) if col_city else "",
+                        "phone": _clean(row.get(col_phone)) if col_phone else "",
                         "score_source_rank": str(rank),
                     }
                     n_kept += 1
-        print(f"📂 {vertical:<10} : {n_rows:>5} lignes → {n_geo:>4} dans le 69 → "
-              f"{n_kept:>4} emails retenus")
+        print(f"[{vertical:<10}] {n_rows:>5} lignes -> {n_geo:>4} dans le 69 -> {n_kept:>4} emails")
     return prospects
 
 
@@ -153,10 +135,10 @@ def load_existing_master() -> dict[str, dict]:
 
 
 def main() -> int:
-    print(f"\n🔧 Build master RAPS (Rhône 69) - {_now()}\n")
+    print(f"\nBuild master RAPS (Rhone 69) - {_now()}\n")
     prospects = collect_prospects()
     if not prospects:
-        print("❌ Aucun prospect dans le 69 - exports manquants ou vides ?")
+        print("Aucun prospect dans le 69 - exports manquants ou vides ?")
         return 1
 
     existing = load_existing_master()
@@ -182,7 +164,6 @@ def main() -> int:
         row["updated_at"] = now
         merged.append(row)
 
-    # Anciens contacts disparus des exports : on conserve (historique précieux)
     n_orphans = 0
     for email, old in existing.items():
         if email not in prospects:
@@ -201,11 +182,11 @@ def main() -> int:
 
     n_pending = sum(1 for r in merged if r["send_status"] == "pending")
     n_sent = sum(1 for r in merged if r["send_status"] == "sent")
-    print(f"\n💾 Master écrit : {len(merged)} contacts (69)")
-    print(f"   🆕 nouveaux pending  : {n_new}")
-    print(f"   🔒 tracking préservé : {n_kept_tracking}")
-    print(f"   👻 orphelins gardés  : {n_orphans}")
-    print(f"   📊 état : {n_pending} pending / {n_sent} sent")
+    print(f"\nMaster ecrit : {len(merged)} contacts (69)")
+    print(f"  nouveaux pending  : {n_new}")
+    print(f"  tracking preserve : {n_kept_tracking}")
+    print(f"  orphelins gardes  : {n_orphans}")
+    print(f"  etat : {n_pending} pending / {n_sent} sent")
     return 0
 
 
