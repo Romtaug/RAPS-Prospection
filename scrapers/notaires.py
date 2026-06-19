@@ -1,24 +1,5 @@
 """
-scrapers/notaires.py
----------------------
-
-Scraper annuaire notaires.fr. Logique identique au notebook d'origine
-(crawl annuaire région par région -> URLs d'offices -> scrape de chaque
-fiche), mais industrialisée :
-
-- Héritage de ScraperBase (upsert SQLite, exports CSV/XLSX/JSONL gérés
-  automatiquement, run_id, mark_stale).
-- iter_records() fusionne les 2 étapes du notebook (crawl_annuaire
-  puis scrape_offices) en un seul générateur.
-- Pas de stockage intermédiaire (SEEN_FILE / OFFICE_URLS_FILE /
-  RAW_ROWS_FILE / FINAL_CSV) : l'état est porté par SQLite + dedup par
-  clé naturelle (url) + content_hash pour détecter les changements.
-- Sleeps randomisés pour éviter les patterns trop réguliers depuis IP
-  datacenter (GitHub Actions).
-- Mode test : 1 région (auvergne-rhone-alpes) + max 30 pages annuaire +
-  max 20 offices, comme dans le notebook d'origine.
-
-Clé naturelle : `url` (URL de la fiche office sur notaires.fr).
+scrapers/notaires.py — version RAPS (Rhône 69, bug pagination corrigé)
 """
 
 from __future__ import annotations
@@ -50,35 +31,15 @@ BASE_URL = "https://www.notaires.fr"
 
 START_URLS_FULL = [
     "https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes",
-    "https://www.notaires.fr/fr/annuaire/bourgogne-franche-comte",
-    "https://www.notaires.fr/fr/annuaire/bretagne",
-    "https://www.notaires.fr/fr/annuaire/centre-val-de-loire",
-    "https://www.notaires.fr/fr/annuaire/corse",
-    "https://www.notaires.fr/fr/annuaire/grand-est",
-    "https://www.notaires.fr/fr/annuaire/hauts-de-france",
-    "https://www.notaires.fr/fr/annuaire/ile-de-france",
-    "https://www.notaires.fr/fr/annuaire/normandie",
-    "https://www.notaires.fr/fr/annuaire/nouvelle-aquitaine",
-    "https://www.notaires.fr/fr/annuaire/occitanie",
-    "https://www.notaires.fr/fr/annuaire/pays-de-la-loire",
-    "https://www.notaires.fr/fr/annuaire/provence-alpes-cote-d-azur",
-    "https://www.notaires.fr/fr/annuaire/guadeloupe",
-    "https://www.notaires.fr/fr/annuaire/martinique",
-    "https://www.notaires.fr/fr/annuaire/guyane",
-    "https://www.notaires.fr/fr/annuaire/la-reunion",
-    "https://www.notaires.fr/fr/annuaire/mayotte",
 ]
 
 START_URLS_TEST = [
     "https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes",
 ]
 
-# Limites en mode test (identiques au notebook)
 TEST_MAX_ANNUAIRE_PAGES = 30
 TEST_MAX_OFFICES = 20
 
-# Sleeps randomisés (le notebook avait 0.35s fixe, on randomise pour éviter
-# les patterns reconnaissables depuis une IP datacenter)
 SLEEP_CRAWL_MIN = 0.3
 SLEEP_CRAWL_MAX = 0.8
 SLEEP_OFFICE_MIN = 0.4
@@ -100,14 +61,8 @@ HEADERS = {
 }
 
 
-# ---------------------------------------------------------------------------
-# Helpers spécifiques notaires.fr (les helpers génériques email/phone/clean
-# viennent de core.utils pour rester cohérent avec les autres scrapers).
-# ---------------------------------------------------------------------------
-
-
 def _normalize_url(url: str) -> str | None:
-    """Force l'URL à pointer sur www.notaires.fr et nettoie le fragment."""
+    """Force l'URL sur www.notaires.fr + canonicalise la pagination."""
     url, _ = urldefrag(url)
     parsed = urlparse(url)
 
@@ -115,8 +70,13 @@ def _normalize_url(url: str) -> str | None:
         return None
 
     full = urljoin(BASE_URL, parsed.path)
+    # On ne garde qu'UN SEUL page=N (le premier) -> empêche l'empilement
+    # ?page=4&page=2&page=... qui faisait exploser la file à l'infini.
     if parsed.query:
-        full += "?" + parsed.query
+        from urllib.parse import parse_qs
+        pages = [p for p in parse_qs(parsed.query).get("page", []) if p.isdigit()]
+        if pages:
+            full += "?page=" + pages[0]
     return full.rstrip("/")
 
 
@@ -128,8 +88,19 @@ def _is_office_url(url: str) -> bool:
     return urlparse(url).path.startswith("/fr/office/")
 
 
+# On ne crawle QUE le Rhône (69) + métropole de Lyon.
+_RHONE_PATHS = (
+    "/fr/annuaire/auvergne-rhone-alpes/rhone",
+    "/fr/annuaire/auvergne-rhone-alpes/metropole-de-lyon",
+)
+
+
+def _is_rhone_annuaire(url: str) -> bool:
+    p = urlparse(url).path.rstrip("/")
+    return any(p == base or p.startswith(base) for base in _RHONE_PATHS)
+
+
 def _extract_breadcrumbs(soup: BeautifulSoup) -> list[str]:
-    """Récupère le fil d'ariane (Accueil > Région > Département > Ville)."""
     crumbs: list[str] = []
     for el in soup.select(".breadcrumb__list span, .breadcrumb__list a"):
         t = clean_text(el.get_text(" ", strip=True))
@@ -154,11 +125,6 @@ def _extract_address(soup: BeautifulSoup) -> str:
             if len(t) > 10:
                 return t
     return ""
-
-
-# ---------------------------------------------------------------------------
-# Scraper
-# ---------------------------------------------------------------------------
 
 
 class NotairesScraper(ScraperBase):
@@ -203,15 +169,20 @@ class NotairesScraper(ScraperBase):
             super().__init__(test_mode=test_mode)
 
         if test_mode:
-            self.start_urls = START_URLS_TEST
             self.max_pages = max_pages or TEST_MAX_ANNUAIRE_PAGES
             self.max_offices = max_offices or TEST_MAX_OFFICES
         else:
-            self.start_urls = START_URLS_FULL
-            self.max_pages = max_pages       # None = illimité
-            self.max_offices = max_offices   # None = illimité
+            self.max_pages = max_pages
+            self.max_offices = max_offices
 
-        # Session persistante avec retry/backoff sur 429/5xx
+        # RAPS : démarrage direct sur le Rhône (69) + métropole de Lyon.
+        self.start_urls = [
+            "https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone",
+            "https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/metropole-de-lyon",
+        ]
+        if self.max_pages is None:
+            self.max_pages = 2000  # filet de sécurité
+
         self._session = requests.Session()
         self._session.headers.update(HEADERS)
         retry = Retry(
@@ -226,18 +197,10 @@ class NotairesScraper(ScraperBase):
         self._session.mount("http://", adapter)
         self._session.mount("https://", adapter)
 
-    # ------------------------------------------------------------------
-    # HTTP
-    # ------------------------------------------------------------------
-
     def _fetch(self, url: str) -> str:
         r = self._session.get(url, timeout=TIMEOUT)
         r.raise_for_status()
         return r.text
-
-    # ------------------------------------------------------------------
-    # ÉTAPE 1 : crawl de l'annuaire
-    # ------------------------------------------------------------------
 
     def _extract_links(self, page_html: str, current_url: str) -> set[str]:
         soup = BeautifulSoup(page_html, "lxml")
@@ -248,8 +211,6 @@ class NotairesScraper(ScraperBase):
             if u:
                 links.add(u)
 
-        # Capture aussi les liens en clair dans le HTML (data-attrs, JSON
-        # inline, etc.) que BeautifulSoup ne voit pas comme des <a>.
         for m in re.findall(
             r"""["'](/fr/(?:annuaire|office)/[^"'?#<>\s]+)["']""",
             page_html,
@@ -269,14 +230,16 @@ class NotairesScraper(ScraperBase):
             if u:
                 urls.add(u)
 
-        for m in re.findall(r"[?&]page=(\d+)", html_text):
-            sep = "&" if "?" in url else "?"
-            urls.add(f"{url}{sep}page={m}")
+        for m in set(re.findall(r"[?&]page=(\d+)", html_text)):
+            # construit l'URL À PARTIR DU CHEMIN -> jamais d'empilement
+            base = url.split("?")[0]
+            u = _normalize_url(f"{base}?page={m}")
+            if u:
+                urls.add(u)
 
         return urls
 
     def _crawl_annuaire(self) -> list[str]:
-        """BFS depuis les régions -> collecte les URLs d'offices."""
         seen: set[str] = set()
         office_urls: set[str] = set()
         queue: list[str] = []
@@ -290,10 +253,8 @@ class NotairesScraper(ScraperBase):
         max_pages = self.max_pages if self.max_pages is not None else 1_000_000
 
         self.log.info("=" * 60)
-        self.log.info("ÉTAPE 1 : CRAWL ANNUAIRE")
+        self.log.info("ETAPE 1 : CRAWL ANNUAIRE (Rhone 69)")
         self.log.info("Start URLs    : %d", len(self.start_urls))
-        self.log.info("Max pages     : %s",
-                      self.max_pages if self.max_pages else "illimité")
         self.log.info("=" * 60)
 
         while queue and done < max_pages:
@@ -320,6 +281,7 @@ class NotairesScraper(ScraperBase):
                             new_offices += 1
                     elif (
                         _is_annuaire_url(link)
+                        and _is_rhone_annuaire(link)
                         and link not in seen
                         and link not in queue
                     ):
@@ -327,15 +289,10 @@ class NotairesScraper(ScraperBase):
                         new_annuaire += 1
 
                 self.log.info(
-                    "[CRAWL] pages=%d/%s | queue=%d | offices=%d "
+                    "[CRAWL] pages=%d | queue=%d | offices=%d "
                     "| +annuaire=%d | +offices=%d | url=%s",
-                    done,
-                    str(self.max_pages) if self.max_pages else "∞",
-                    len(queue),
-                    len(office_urls),
-                    new_annuaire,
-                    new_offices,
-                    url,
+                    done, len(queue), len(office_urls),
+                    new_annuaire, new_offices, url,
                 )
 
                 time.sleep(random.uniform(SLEEP_CRAWL_MIN, SLEEP_CRAWL_MAX))
@@ -343,19 +300,14 @@ class NotairesScraper(ScraperBase):
             except Exception as e:
                 self.log.warning("[ERREUR CRAWL] %s -> %r", url, e)
 
-        self.log.info("[CRAWL FINI] offices trouvés=%d", len(office_urls))
+        self.log.info("[CRAWL FINI] offices trouves=%d", len(office_urls))
         return sorted(office_urls)
-
-    # ------------------------------------------------------------------
-    # ÉTAPE 2 : scraping des fiches offices
-    # ------------------------------------------------------------------
 
     def _scrape_office(self, url: str) -> dict:
         page = self._fetch(url)
         soup = BeautifulSoup(page, "lxml")
         text = soup.get_text(" ", strip=True)
 
-        # Titre de l'office
         h1 = soup.find("h1")
         title = clean_text(h1.get_text(" ", strip=True)) if h1 else ""
         if not title and soup.find("title"):
@@ -363,10 +315,8 @@ class NotairesScraper(ScraperBase):
                 soup.find("title").get_text()
             ).replace("| Notaires de France", "").strip()
 
-        # Emails : combinaison du HTML brut + texte rendu
         emails = extract_emails(page + " " + text)
 
-        # Décodage Cloudflare au cas où l'email principal serait obfusqué
         cf_email = soup.select_one(".__cf_email__")
         if cf_email and cf_email.get("data-cfemail"):
             decoded = decode_cfemail(cf_email.get("data-cfemail"))
@@ -393,28 +343,21 @@ class NotairesScraper(ScraperBase):
         })
         return row
 
-    # ------------------------------------------------------------------
-    # iter_records : appelé par ScraperBase.run()
-    # ------------------------------------------------------------------
-
     def iter_records(self) -> Iterator[dict]:
         office_urls = self._crawl_annuaire()
 
-        # Scraping incrémental : skip des offices déjà connus (passés via
-        # l'attribut skip_urls par scrape_slice.py). Chaque run ne fetch
-        # que des fiches NOUVELLES -> la tranche avance toute seule.
         skip = getattr(self, "skip_urls", None)
         if skip:
             before = len(office_urls)
             office_urls = [u for u in office_urls if u not in skip]
-            self.log.info("Skip déjà en base : %d -> %d nouveaux", before, len(office_urls))
+            self.log.info("Skip deja en base : %d -> %d nouveaux", before, len(office_urls))
 
         if self.max_offices is not None:
             office_urls = office_urls[: self.max_offices]
 
         total = len(office_urls)
         self.log.info("=" * 60)
-        self.log.info("ÉTAPE 2 : SCRAPING OFFICES (%d à scraper)", total)
+        self.log.info("ETAPE 2 : SCRAPING OFFICES (%d a scraper)", total)
         self.log.info("=" * 60)
 
         for i, url in enumerate(office_urls, 1):
@@ -426,8 +369,7 @@ class NotairesScraper(ScraperBase):
 
             self.log.info(
                 "[OFFICE] %d/%d | email=%s | office=%s",
-                i,
-                total,
+                i, total,
                 "oui" if row.get("email") else "non",
                 (row.get("office") or "")[:80],
             )
