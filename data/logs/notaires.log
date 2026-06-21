@@ -642,3 +642,325 @@
 [2026-06-19 13:29:50] [scraper.notaires] INFO CSV exporté : exports/notaires/annuaire_notaires_france.csv (242 lignes)
 [2026-06-19 13:29:50] [scraper.notaires] INFO JSONL exporté : exports/notaires/annuaire_notaires_france.jsonl (242 lignes)
 [2026-06-19 13:29:50] [scraper.notaires] INFO XLSX exporté : exports/notaires/annuaire_notaires_france.xlsx (242 lignes)
+[2026-06-21 09:37:04] [scraper.notaires] INFO ======================================================================
+[2026-06-21 09:37:04] [scraper.notaires] INFO Démarrage scraper 'notaires' (mode=update, test=False)
+[2026-06-21 09:37:04] [scraper.notaires] INFO DB : /home/runner/work/RAPS-Prospection/RAPS-Prospection/data/notaires.db
+[2026-06-21 09:37:04] [scraper.notaires] INFO run_id = 0930672fcc6945bc
+[2026-06-21 09:37:04] [scraper.notaires] INFO ============================================================
+[2026-06-21 09:37:04] [scraper.notaires] INFO ETAPE 1 : CRAWL ANNUAIRE (Rhone 69)
+[2026-06-21 09:37:04] [scraper.notaires] INFO Start URLs    : 2
+[2026-06-21 09:37:04] [scraper.notaires] INFO ============================================================
+[2026-06-21 09:37:05] [scraper.notaires] INFO [CRAWL] pages=1 | queue=11 | offices=9 | +annuaire=10 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone
+[2026-06-21 09:37:06] [scraper.notaires] INFO [CRAWL] pages=2 | queue=10 | offices=9 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/metropole-de-lyon
+[2026-06-21 09:37:10] [scraper.notaires] INFO [CRAWL] pages=3 | queue=9 | offices=18 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=2
+[2026-06-21 09:37:12] [scraper.notaires] INFO [CRAWL] pages=4 | queue=9 | offices=27 | +annuaire=1 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=5
+[2026-06-21 09:37:14] [scraper.notaires] INFO [CRAWL] pages=5 | queue=8 | offices=36 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=4
+[2026-06-21 09:37:16] [scraper.notaires] INFO [CRAWL] pages=6 | queue=10 | offices=45 | +annuaire=3 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=8
+[2026-06-21 09:37:18] [scraper.notaires] INFO [CRAWL] pages=7 | queue=27 | offices=50 | +annuaire=18 | +offices=5 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon
+[2026-06-21 09:37:20] [scraper.notaires] INFO [CRAWL] pages=8 | queue=26 | offices=54 | +annuaire=0 | +offices=4 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=1
+[2026-06-21 09:37:22] [scraper.notaires] INFO [CRAWL] pages=9 | queue=25 | offices=63 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=7
+[2026-06-21 09:37:25] [scraper.notaires] INFO [CRAWL] pages=10 | queue=32 | offices=71 | +annuaire=8 | +offices=8 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=26
+[2026-06-21 09:37:27] [scraper.notaires] INFO [CRAWL] pages=11 | queue=31 | offices=80 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=3
+[2026-06-21 09:37:30] [scraper.notaires] INFO [CRAWL] pages=12 | queue=30 | offices=89 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=6
+[2026-06-21 09:37:32] [scraper.notaires] INFO [CRAWL] pages=13 | queue=30 | offices=98 | +annuaire=1 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=9
+[2026-06-21 09:37:35] [scraper.notaires] INFO [CRAWL] pages=14 | queue=31 | offices=107 | +annuaire=2 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=11
+[2026-06-21 09:37:37] [scraper.notaires] INFO [CRAWL] pages=15 | queue=31 | offices=116 | +annuaire=1 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=12
+[2026-06-21 09:37:39] [scraper.notaires] INFO [CRAWL] pages=16 | queue=30 | offices=125 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=10
+[2026-06-21 09:37:41] [scraper.notaires] INFO [CRAWL] pages=17 | queue=29 | offices=129 | +annuaire=0 | +offices=4 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-4e-arrondissement
+[2026-06-21 09:37:43] [scraper.notaires] INFO [CRAWL] pages=18 | queue=31 | offices=129 | +annuaire=3 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-2e-arrondissement
+[2026-06-21 09:37:45] [scraper.notaires] INFO [CRAWL] pages=19 | queue=31 | offices=129 | +annuaire=1 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=5
+[2026-06-21 09:37:46] [scraper.notaires] INFO [CRAWL] pages=20 | queue=31 | offices=134 | +annuaire=1 | +offices=5 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-7e-arrondissement
+[2026-06-21 09:37:49] [scraper.notaires] INFO [CRAWL] pages=21 | queue=33 | offices=142 | +annuaire=3 | +offices=8 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=8
+[2026-06-21 09:37:51] [scraper.notaires] INFO [CRAWL] pages=22 | queue=32 | offices=144 | +annuaire=0 | +offices=2 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-8e-arrondissement
+[2026-06-21 09:37:53] [scraper.notaires] INFO [CRAWL] pages=23 | queue=31 | offices=145 | +annuaire=0 | +offices=1 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-9e-arrondissement
+[2026-06-21 09:37:55] [scraper.notaires] INFO [CRAWL] pages=24 | queue=30 | offices=145 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=2
+[2026-06-21 09:37:57] [scraper.notaires] INFO [CRAWL] pages=25 | queue=31 | offices=145 | +annuaire=2 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-3e-arrondissement
+[2026-06-21 09:37:59] [scraper.notaires] INFO [CRAWL] pages=26 | queue=30 | offices=145 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=4
+[2026-06-21 09:38:01] [scraper.notaires] INFO [CRAWL] pages=27 | queue=29 | offices=145 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=1
+[2026-06-21 09:38:03] [scraper.notaires] INFO [CRAWL] pages=28 | queue=28 | offices=147 | +annuaire=0 | +offices=2 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=13
+[2026-06-21 09:38:05] [scraper.notaires] INFO [CRAWL] pages=29 | queue=27 | offices=149 | +annuaire=0 | +offices=2 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=6
+[2026-06-21 09:38:06] [scraper.notaires] INFO [CRAWL] pages=30 | queue=26 | offices=151 | +annuaire=0 | +offices=2 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-5e-arrondissement
+[2026-06-21 09:38:08] [scraper.notaires] INFO [CRAWL] pages=31 | queue=25 | offices=154 | +annuaire=0 | +offices=3 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-1er-arrondissement
+[2026-06-21 09:38:10] [scraper.notaires] INFO [CRAWL] pages=32 | queue=24 | offices=154 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=3
+[2026-06-21 09:38:12] [scraper.notaires] INFO [CRAWL] pages=33 | queue=23 | offices=159 | +annuaire=0 | +offices=5 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=7
+[2026-06-21 09:38:14] [scraper.notaires] INFO [CRAWL] pages=34 | queue=25 | offices=159 | +annuaire=3 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-6e-arrondissement
+[2026-06-21 09:38:16] [scraper.notaires] INFO [CRAWL] pages=35 | queue=24 | offices=167 | +annuaire=0 | +offices=8 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=24
+[2026-06-21 09:38:18] [scraper.notaires] INFO [CRAWL] pages=36 | queue=23 | offices=172 | +annuaire=0 | +offices=5 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=25
+[2026-06-21 09:38:21] [scraper.notaires] INFO [CRAWL] pages=37 | queue=23 | offices=179 | +annuaire=1 | +offices=7 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=20
+[2026-06-21 09:38:25] [scraper.notaires] INFO [CRAWL] pages=38 | queue=22 | offices=187 | +annuaire=0 | +offices=8 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=21
+[2026-06-21 09:38:28] [scraper.notaires] INFO [CRAWL] pages=39 | queue=21 | offices=194 | +annuaire=0 | +offices=7 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=19
+[2026-06-21 09:38:30] [scraper.notaires] INFO [CRAWL] pages=40 | queue=20 | offices=202 | +annuaire=0 | +offices=8 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=22
+[2026-06-21 09:38:33] [scraper.notaires] INFO [CRAWL] pages=41 | queue=19 | offices=210 | +annuaire=0 | +offices=8 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=23
+[2026-06-21 09:38:35] [scraper.notaires] INFO [CRAWL] pages=42 | queue=18 | offices=219 | +annuaire=0 | +offices=9 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=18
+[2026-06-21 09:38:38] [scraper.notaires] INFO [CRAWL] pages=43 | queue=17 | offices=225 | +annuaire=0 | +offices=6 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=13
+[2026-06-21 09:38:40] [scraper.notaires] INFO [CRAWL] pages=44 | queue=16 | offices=229 | +annuaire=0 | +offices=4 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=14
+[2026-06-21 09:38:42] [scraper.notaires] INFO [CRAWL] pages=45 | queue=15 | offices=231 | +annuaire=0 | +offices=2 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=15
+[2026-06-21 09:38:45] [scraper.notaires] INFO [CRAWL] pages=46 | queue=14 | offices=235 | +annuaire=0 | +offices=4 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=16
+[2026-06-21 09:38:47] [scraper.notaires] INFO [CRAWL] pages=47 | queue=13 | offices=237 | +annuaire=0 | +offices=2 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-2e-arrondissement?page=2
+[2026-06-21 09:38:49] [scraper.notaires] INFO [CRAWL] pages=48 | queue=12 | offices=237 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-2e-arrondissement?page=3
+[2026-06-21 09:38:51] [scraper.notaires] INFO [CRAWL] pages=49 | queue=11 | offices=238 | +annuaire=0 | +offices=1 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-2e-arrondissement?page=1
+[2026-06-21 09:38:53] [scraper.notaires] INFO [CRAWL] pages=50 | queue=10 | offices=241 | +annuaire=0 | +offices=3 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=9
+[2026-06-21 09:38:55] [scraper.notaires] INFO [CRAWL] pages=51 | queue=9 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-7e-arrondissement?page=1
+[2026-06-21 09:38:57] [scraper.notaires] INFO [CRAWL] pages=52 | queue=8 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=11
+[2026-06-21 09:39:00] [scraper.notaires] INFO [CRAWL] pages=53 | queue=7 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=12
+[2026-06-21 09:39:02] [scraper.notaires] INFO [CRAWL] pages=54 | queue=6 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon?page=10
+[2026-06-21 09:39:04] [scraper.notaires] INFO [CRAWL] pages=55 | queue=5 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-3e-arrondissement?page=2
+[2026-06-21 09:39:05] [scraper.notaires] INFO [CRAWL] pages=56 | queue=4 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-3e-arrondissement?page=1
+[2026-06-21 09:39:07] [scraper.notaires] INFO [CRAWL] pages=57 | queue=3 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-6e-arrondissement?page=3
+[2026-06-21 09:39:09] [scraper.notaires] INFO [CRAWL] pages=58 | queue=2 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-6e-arrondissement?page=2
+[2026-06-21 09:39:11] [scraper.notaires] INFO [CRAWL] pages=59 | queue=1 | offices=241 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone/lyon/lyon-6e-arrondissement?page=1
+[2026-06-21 09:39:14] [scraper.notaires] INFO [CRAWL] pages=60 | queue=0 | offices=242 | +annuaire=0 | +offices=1 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone?page=17
+[2026-06-21 09:39:14] [scraper.notaires] INFO [CRAWL FINI] offices trouves=242
+[2026-06-21 09:39:14] [scraper.notaires] INFO ============================================================
+[2026-06-21 09:39:14] [scraper.notaires] INFO ETAPE 2 : SCRAPING OFFICES (242 a scraper)
+[2026-06-21 09:39:14] [scraper.notaires] INFO ============================================================
+[2026-06-21 09:39:15] [scraper.notaires] INFO [OFFICE] 1/242 | email=oui | office=Office notarial ABEL Elsa à LYON (69002) | 3 cours Charlemagne
+[2026-06-21 09:39:17] [scraper.notaires] INFO [OFFICE] 2/242 | email=oui | office=Office notarial ACTANOT, SELARL à SÉRÉZIN-DU-RHÔNE (69360) | 1 Route Département
+[2026-06-21 09:39:18] [scraper.notaires] INFO [OFFICE] 3/242 | email=oui | office=Office notarial ACTES@VAULX; SELARL à VAULX-EN-VELIN (69120) | 2 rue Lounès Mato
+[2026-06-21 09:39:20] [scraper.notaires] INFO [OFFICE] 4/242 | email=oui | office=Office notarial ADAMO Emilie à COMMUNAY (69360) | 2 route de Marennes
+[2026-06-21 09:39:21] [scraper.notaires] INFO [OFFICE] 5/242 | email=oui | office=Office notarial AGI & ASSOCIES, SELAS à VILLEURBANNE (69100) | 180 cours Emile Z
+[2026-06-21 09:39:23] [scraper.notaires] INFO [OFFICE] 6/242 | email=oui | office=Office notarial AINAY Notaires, SELARL à LYON (69002) | 18 rue Bourgelat
+[2026-06-21 09:39:25] [scraper.notaires] INFO [OFFICE] 7/242 | email=oui | office=Office notarial ALEXANDRE Stéphane à LYON (69004) | 4 bis rue de Belfort
+[2026-06-21 09:39:26] [scraper.notaires] INFO [OFFICE] 8/242 | email=oui | office=Office notarial ALLARD-LAURENT, Notaire, SELARL à associé unique à TARARE (69170
+[2026-06-21 09:39:28] [scraper.notaires] INFO [OFFICE] 9/242 | email=oui | office=Office notarial AMSELLAM-ZAOUI, notaire associé, SELARL à JONAGE (69330) | 85 bo
+[2026-06-21 09:39:30] [scraper.notaires] INFO [OFFICE] 10/242 | email=oui | office=Office notarial ANDENOT, SELARL à BEAUVALLON - ST ANDEOL LE CHATEAU (69700) | 61
+[2026-06-21 09:39:31] [scraper.notaires] INFO [OFFICE] 11/242 | email=oui | office=Office notarial ANGLADE et associés à NEUVILLE-SUR-SAÔNE (69250) | 2 bis rue Jac
+[2026-06-21 09:39:33] [scraper.notaires] INFO [OFFICE] 12/242 | email=oui | office=Office notarial ARAKELIAN Hovhannès à LYON (69007) | 289 rue Garibaldi
+[2026-06-21 09:39:36] [scraper.notaires] INFO [OFFICE] 13/242 | email=oui | office=Office notarial ARCHERS NOTAIRES à LYON (69002) | 10 rue des Archers
+[2026-06-21 09:39:37] [scraper.notaires] INFO [OFFICE] 14/242 | email=oui | office=Office notarial ASTERIA, SELARL à TASSIN-LA-DEMI-LUNE (69160) | 91 bis avenue de
+[2026-06-21 09:39:39] [scraper.notaires] INFO [OFFICE] 15/242 | email=oui | office=Office notarial AUBERTIN Claudine à LYON (69002) | 2 rue Charles Baudelaire
+[2026-06-21 09:39:40] [scraper.notaires] INFO [OFFICE] 16/242 | email=oui | office=Office notarial AUBIN et associés à GENAS (69740) | 38 RUE DE LA REPUBLIQUE
+[2026-06-21 09:39:42] [scraper.notaires] INFO [OFFICE] 17/242 | email=oui | office=Office notarial AUCOEUR Florence à BELLEVILLE-EN-BEAUJOLAIS - BELLEVILLE (69220)
+[2026-06-21 09:39:44] [scraper.notaires] INFO [OFFICE] 18/242 | email=oui | office=Office notarial AUTHENTICA NOTAIRE, SELARL à associé unique à LYON (69003) | 228
+[2026-06-21 09:39:45] [scraper.notaires] INFO [OFFICE] 19/242 | email=oui | office=Office notarial AZEDDIOUI Karim à LYON (69006) | 151 rue Cuvier
+[2026-06-21 09:39:47] [scraper.notaires] INFO [OFFICE] 20/242 | email=oui | office=Office notarial AZOULAY, notaire associé, SELARL à RILLIEUX-LA-PAPE (69140) | 28
+[2026-06-21 09:39:48] [scraper.notaires] INFO [OFFICE] 21/242 | email=oui | office=Office notarial BALAY Nathalie à LYON (69002) | 13 Rue Emile Zola
+[2026-06-21 09:39:50] [scraper.notaires] INFO [OFFICE] 22/242 | email=oui | office=Office notarial BARET Alain à LYON (69003) | 286 rue Garibaldi
+[2026-06-21 09:39:51] [scraper.notaires] INFO [OFFICE] 23/242 | email=oui | office=Office notarial BAS Jean-Baptiste à LYON (69002) | 54 rue du Président Edouard H
+[2026-06-21 09:39:53] [scraper.notaires] INFO [OFFICE] 24/242 | email=oui | office=Office notarial BAUDONCQ Jérôme à LYON (69006) | 124 rue Bugeaud
+[2026-06-21 09:39:54] [scraper.notaires] INFO [OFFICE] 25/242 | email=oui | office=Office notarial BAZAILLE & Associés à GIVORS (69700) | 23 rue Denfert Rochereau
+[2026-06-21 09:39:56] [scraper.notaires] INFO [OFFICE] 26/242 | email=oui | office=Office notarial BBS NOTAIRES, SELAS à LYON (69005) | 40-41 quai Fulchiron
+[2026-06-21 09:39:57] [scraper.notaires] INFO [OFFICE] 27/242 | email=oui | office=Office notarial BECKER Camille à SAINT-BONNET-DE-MURE (69720) | 45 avenue Charle
+[2026-06-21 09:39:58] [scraper.notaires] INFO [OFFICE] 28/242 | email=oui | office=Office notarial BELLON BESSE NOTAIRE, SELARL à LYON (69006) | 84 boulevard des B
+[2026-06-21 09:40:00] [scraper.notaires] INFO [OFFICE] 29/242 | email=oui | office=Office notarial BERGER et associé, SELARL à SAINT-LAURENT-DE-CHAMOUSSET (69930) 
+[2026-06-21 09:40:02] [scraper.notaires] INFO [OFFICE] 30/242 | email=oui | office=Office notarial BERSIHAND-VIDECOQ Julie à TASSIN-LA-DEMI-LUNE (69160) | 111 aven
+[2026-06-21 09:40:03] [scraper.notaires] INFO [OFFICE] 31/242 | email=oui | office=Office notarial BERTOLINO Chloé à VILLEFRANCHE-SUR-SAÔNE (69400) | 60 avenue Thé
+[2026-06-21 09:40:05] [scraper.notaires] INFO [OFFICE] 32/242 | email=oui | office=Office notarial BONNAFE Victor à LYON (69006) | 93-95 rue Vendôme
+[2026-06-21 09:40:06] [scraper.notaires] INFO [OFFICE] 33/242 | email=oui | office=Office notarial BONNEFOND et associé à LYON (69002) | 45 RUE DE LA REPUBLIQUE
+[2026-06-21 09:40:07] [scraper.notaires] INFO [OFFICE] 34/242 | email=oui | office=Office notarial BONNEFOY, notaire associée, SELARL à CALUIRE-ET-CUIRE (69300) | 
+[2026-06-21 09:40:08] [scraper.notaires] INFO [OFFICE] 35/242 | email=oui | office=Office notarial BOUCHET-DOUMENQ Anne-Charlotte à LYON (69008) | 121 Avenue des F
+[2026-06-21 09:40:10] [scraper.notaires] INFO [OFFICE] 36/242 | email=non | office=Office notarial BOUZOUINA Adel à LYON (69006) | 111 rue Masséna
+[2026-06-21 09:40:12] [scraper.notaires] INFO [OFFICE] 37/242 | email=oui | office=Office notarial BOY Marion à LOZANNE (69380) | 220 route de Lyon
+[2026-06-21 09:40:13] [scraper.notaires] INFO [OFFICE] 38/242 | email=oui | office=Office notarial BRAC DE LA PERRIERE et associés, SAS à LYON (69003) | 31 cours d
+[2026-06-21 09:40:15] [scraper.notaires] INFO [OFFICE] 39/242 | email=oui | office=Office notarial BREMENS Florent à LYON (69006) | 76 rue Ney
+[2026-06-21 09:40:16] [scraper.notaires] INFO [OFFICE] 40/242 | email=oui | office=Office notarial BRIOT Sophie à LYON (69003) | 34 rue Servient
+[2026-06-21 09:40:18] [scraper.notaires] INFO [OFFICE] 41/242 | email=oui | office=Office notarial BRUN et associé à LYON (69003) | 234 cours Lafayette
+[2026-06-21 09:40:19] [scraper.notaires] INFO [OFFICE] 42/242 | email=oui | office=Office notarial BURESI Carla-Marie à LYON (69006) | 53 avenue Maréchal Foch
+[2026-06-21 09:40:20] [scraper.notaires] INFO [OFFICE] 43/242 | email=oui | office=Office notarial CHARTIER Jean-Philippe à LENTILLY (69210) | 19 Route Nationale 7
+[2026-06-21 09:40:22] [scraper.notaires] INFO [OFFICE] 44/242 | email=oui | office=Office notarial CHATELARD Gaëlle à SAINTE-FOY-L'ARGENTIÈRE (69610) | 31 Place du
+[2026-06-21 09:40:23] [scraper.notaires] INFO [OFFICE] 45/242 | email=oui | office=Office notarial CHAZALETTE, SELURL à LYON (69001) | 22 rue Constantine
+[2026-06-21 09:40:24] [scraper.notaires] INFO [OFFICE] 46/242 | email=oui | office=Office notarial CHERET Louis à VILLEFRANCHE-SUR-SAÔNE (69400) | 40 Rue Auguste A
+[2026-06-21 09:40:26] [scraper.notaires] INFO [OFFICE] 47/242 | email=oui | office=Office notarial CHONIK, SELARL à associé unique à RILLIEUX-LA-PAPE (69140) | 260
+[2026-06-21 09:40:28] [scraper.notaires] INFO [OFFICE] 48/242 | email=oui | office=Office notarial CLEALP NOTAIRES, SELARL à LYON (69008) | 5, Place des Frères Voi
+[2026-06-21 09:40:29] [scraper.notaires] INFO [OFFICE] 49/242 | email=oui | office=Office notarial COILLARD TERRIER Clémence à ARNAS (69400) | 83 impasse des Barri
+[2026-06-21 09:40:31] [scraper.notaires] INFO [OFFICE] 50/242 | email=oui | office=Office notarial COLAS Laura à LYON (69003) | 204 rue de Vendôme
+[2026-06-21 09:40:31] [scraper.notaires] INFO flush : total=50 (inserted=0 updated=50 unchanged=0)
+[2026-06-21 09:40:32] [scraper.notaires] INFO [OFFICE] 51/242 | email=oui | office=Office notarial COLOMB - CERON - BOULESTEIX, SELARL à SAINT-GENIS-LAVAL (69230) 
+[2026-06-21 09:40:34] [scraper.notaires] INFO [OFFICE] 52/242 | email=oui | office=Office notarial COMPAGNON et associée à VÉNISSIEUX (69200) | 52 rue Professeur R
+[2026-06-21 09:40:36] [scraper.notaires] INFO [OFFICE] 53/242 | email=oui | office=Office notarial COURBON, ODIN, SELARL à LYON (69006) | 23 quai Général Sarrail
+[2026-06-21 09:40:37] [scraper.notaires] INFO [OFFICE] 54/242 | email=oui | office=Office notarial COUVERT et associés, SARL à BELLEVILLE (69220) | 8 PLACE DE L EG
+[2026-06-21 09:40:39] [scraper.notaires] INFO [OFFICE] 55/242 | email=oui | office=Office notarial CURUNET-PARRAMON Virginie à CHARBONNIÈRES-LES-BAINS (69260) | 10
+[2026-06-21 09:40:40] [scraper.notaires] INFO [OFFICE] 56/242 | email=oui | office=Office notarial DAUVISIS Michel à SAINT-SYMPHORIEN-D'OZON (69360) | 11 avenue Bu
+[2026-06-21 09:40:42] [scraper.notaires] INFO [OFFICE] 57/242 | email=oui | office=Office notarial DOUZON Denis à LYON (69007) | 55 AVENUE JEAN JAURES
+[2026-06-21 09:40:43] [scraper.notaires] INFO [OFFICE] 58/242 | email=oui | office=Office notarial DUCAROUGE Nathalie à DARDILLY (69570) | 6 AVENUE DE VERDUN
+[2026-06-21 09:40:45] [scraper.notaires] INFO [OFFICE] 59/242 | email=oui | office=Office notarial ENTRELIGNE NOTAIRES, SELAS à BRON (69500) | 200 avenue Franklin 
+[2026-06-21 09:40:46] [scraper.notaires] INFO [OFFICE] 60/242 | email=oui | office=Office notarial ENVO’L - NOTAIRES ASSOCIES, SELARL à VAL D'OINGT - LE BOIS D OIN
+[2026-06-21 09:40:48] [scraper.notaires] INFO [OFFICE] 61/242 | email=oui | office=Office notarial EST’ACT NOTAIRES, SELARL à BRON (69500) | 150 Rue de la pagère
+[2026-06-21 09:40:50] [scraper.notaires] INFO [OFFICE] 62/242 | email=oui | office=Office notarial EUNOMIA, SELAS à LYON (69001) | 3 rue de la République
+[2026-06-21 09:40:50] [scraper.notaires] INFO [OFFICE] 63/242 | email=non | office=Office notarial FALCOZ et associés à LYON (69006) | 63 rue Duquesne
+[2026-06-21 09:40:52] [scraper.notaires] INFO [OFFICE] 64/242 | email=oui | office=Office notarial FAURÉ Laurent à MEYZIEU (69330) | 4 place Burignat
+[2026-06-21 09:40:54] [scraper.notaires] INFO [OFFICE] 65/242 | email=oui | office=Office notarial GAILLOT et associée, SELARL à SAINT-GEORGES-DE-RENEINS (69830) |
+[2026-06-21 09:40:56] [scraper.notaires] INFO [OFFICE] 66/242 | email=oui | office=Office notarial GALILEE, SELARL à MARCY-L'ÉTOILE (69280) | 1163 Avenue Marcel Mé
+[2026-06-21 09:40:57] [scraper.notaires] INFO [OFFICE] 67/242 | email=oui | office=Office notarial GARCIN et associée à LYON (69002) | 12 quai Saint-Antoine
+[2026-06-21 09:40:59] [scraper.notaires] INFO [OFFICE] 68/242 | email=oui | office=Office notarial GAZQUEZ, SELARL à LYON (69006) | 18 rue de Créqui
+[2026-06-21 09:41:01] [scraper.notaires] INFO [OFFICE] 69/242 | email=oui | office=Office notarial GERIN - EPELY, notaire associée, SELURL à ÉCULLY (69130) | 16 AV
+[2026-06-21 09:41:02] [scraper.notaires] INFO [OFFICE] 70/242 | email=oui | office=Office notarial GHO Lorena à LYON (69004) | 17 rue d' Austerlitz
+[2026-06-21 09:41:03] [scraper.notaires] INFO [OFFICE] 71/242 | email=oui | office=Office notarial GIDON, RICHARD, PALAZZOLO, SELARL à CHASSELAY (69380) | 315 chem
+[2026-06-21 09:41:05] [scraper.notaires] INFO [OFFICE] 72/242 | email=oui | office=Office notarial GINON & ASSOCIÉS, SAS à LYON (69002) | 7 rue Antoine de Saint Ex
+[2026-06-21 09:41:06] [scraper.notaires] INFO [OFFICE] 73/242 | email=oui | office=Office notarial GINON & ASSOCIÉS, SAS à LYON (69002) | 7 rue Antoine de Saint Ex
+[2026-06-21 09:41:08] [scraper.notaires] INFO [OFFICE] 74/242 | email=oui | office=Office notarial GOBET Nelly à SAIN-BEL (69210) | 30 quai de la Brévenne
+[2026-06-21 09:41:09] [scraper.notaires] INFO [OFFICE] 75/242 | email=oui | office=Office notarial GODARD Maud à LYON (69007) | 42 rue de l'Université
+[2026-06-21 09:41:11] [scraper.notaires] INFO [OFFICE] 76/242 | email=oui | office=Office notarial GODEMEL et associés à MORNANT (69440) | 9 avenue de Verdun
+[2026-06-21 09:41:12] [scraper.notaires] INFO [OFFICE] 77/242 | email=oui | office=Office notarial GOLLY François à OULLINS-PIERRE-BÉNITE - OULLINS (69600) | 5 rue
+[2026-06-21 09:41:13] [scraper.notaires] INFO [OFFICE] 78/242 | email=oui | office=Office notarial GOUTILLE Pierre à LYON (69008) | 13 place du 11 novembre 1918
+[2026-06-21 09:41:15] [scraper.notaires] INFO [OFFICE] 79/242 | email=oui | office=Office notarial GUERIN Claudie à TASSIN-LA-DEMI-LUNE (69160) | 14, B Chemin du P
+[2026-06-21 09:41:17] [scraper.notaires] INFO [OFFICE] 80/242 | email=oui | office=Office notarial GUIGNOT Anthony à CORBAS (69960) | 5 rue du Mont Blanc
+[2026-06-21 09:41:18] [scraper.notaires] INFO [OFFICE] 81/242 | email=oui | office=Office notarial HAMPARSOUMIAN et CAZARIAN, SELARL à LYON (69002) | 6 rue Emile Z
+[2026-06-21 09:41:20] [scraper.notaires] INFO [OFFICE] 82/242 | email=oui | office=Office notarial HAMPARSOUMIAN Magalie à SAINT-DIDIER-AU-MONT-D'OR (69370) | 113 
+[2026-06-21 09:41:21] [scraper.notaires] INFO [OFFICE] 83/242 | email=oui | office=Office notarial HEITZ-ESCUDIER et associée, SELAS à LYON (69006) | 20 Avenue du 
+[2026-06-21 09:41:22] [scraper.notaires] INFO [OFFICE] 84/242 | email=oui | office=Office notarial HEYMONET Diane à LYON (69003) | 38 cours Eugénie
+[2026-06-21 09:41:23] [scraper.notaires] INFO [OFFICE] 85/242 | email=oui | office=Office notarial Homnia notaires, SAS à VILLEURBANNE (69100) | 1 place Charles He
+[2026-06-21 09:41:24] [scraper.notaires] INFO [OFFICE] 86/242 | email=oui | office=Office notarial Homnia notaires, SAS à LYON (69002) | 2 rue Childebert
+[2026-06-21 09:41:26] [scraper.notaires] INFO [OFFICE] 87/242 | email=oui | office=Office notarial INGAB NOTAIRE, SELARL à LYON (69003) | 95 rue Molière
+[2026-06-21 09:41:28] [scraper.notaires] INFO [OFFICE] 88/242 | email=oui | office=Office notarial JACOB – CARTIER, notaires, SELARL à LYON (69001) | 1 rue Puits G
+[2026-06-21 09:41:29] [scraper.notaires] INFO [OFFICE] 89/242 | email=oui | office=Office notarial Julie SCHLÄPPI, SELURL à SAINT-DIDIER-AU-MONT-D'OR (69370) | 44 
+[2026-06-21 09:41:31] [scraper.notaires] INFO [OFFICE] 90/242 | email=oui | office=Office notarial KAEUFLING NOTAIRES, SARL à SAINT-PRIEST (69800) | 12 Bd François
+[2026-06-21 09:41:32] [scraper.notaires] INFO [OFFICE] 91/242 | email=oui | office=Office notarial KINTZIG et associé à SAINT-LAURENT-DE-MURE (69720) | 77 avenue J
+[2026-06-21 09:41:34] [scraper.notaires] INFO [OFFICE] 92/242 | email=oui | office=Office notarial KLEPPING Julien à LYON (69007) | 23 rue Crépet
+[2026-06-21 09:41:35] [scraper.notaires] INFO [OFFICE] 93/242 | email=oui | office=Office notarial KLIF Notaire, SELAS à associé unique à LYON (69006) | 49 cours V
+[2026-06-21 09:41:37] [scraper.notaires] INFO [OFFICE] 94/242 | email=oui | office=Office notarial KONSTELL, SELARL à LYON (69002) | 4 rue de la Charité
+[2026-06-21 09:41:38] [scraper.notaires] INFO [OFFICE] 95/242 | email=oui | office=Office notarial LAGREVOL Edouard à LIMONEST (69760) | 4 Place du Griffon
+[2026-06-21 09:41:39] [scraper.notaires] INFO [OFFICE] 96/242 | email=oui | office=Office notarial LAITHIER Céline à LYON (69002) | 41 rue de la Bourse
+[2026-06-21 09:41:41] [scraper.notaires] INFO [OFFICE] 97/242 | email=oui | office=Office notarial LAMAMRA Terec à NEUVILLE-SUR-SAÔNE (69250) | 11 Avenue Carnot
+[2026-06-21 09:41:42] [scraper.notaires] INFO [OFFICE] 98/242 | email=oui | office=Office notarial LAMOTHE Damien à LYON (69007) | 193 rue Marcel Mérieux
+[2026-06-21 09:41:43] [scraper.notaires] INFO [OFFICE] 99/242 | email=oui | office=Office notarial LANGARD-NOTAIRE, SELARL à LYON (69008) | 11, rue Berchet
+[2026-06-21 09:41:45] [scraper.notaires] INFO [OFFICE] 100/242 | email=oui | office=Office notarial LAUTREY et associée, SELARL à VINDRY-SUR-TURDINE - PONTCHARRA SU
+[2026-06-21 09:41:45] [scraper.notaires] INFO flush : total=100 (inserted=0 updated=100 unchanged=0)
+[2026-06-21 09:41:46] [scraper.notaires] INFO [OFFICE] 101/242 | email=oui | office=Office notarial LAVOREL Amaury à LYON (69005) | 13 place Benoit Crépu
+[2026-06-21 09:41:48] [scraper.notaires] INFO [OFFICE] 102/242 | email=oui | office=Office notarial LES NOUVEAUX NOTAIRES, SELAS à LYON (69006) | 10 rue Malesherbes
+[2026-06-21 09:41:49] [scraper.notaires] INFO [OFFICE] 103/242 | email=oui | office=Office notarial LINK NOTAIRES, SARL à CALUIRE-ET-CUIRE (69300) | 71 Rue François
+[2026-06-21 09:41:50] [scraper.notaires] INFO [OFFICE] 104/242 | email=oui | office=Office notarial LOMBARD Wafae à LIMONEST (69760) | 314 allée des Noisetiers
+[2026-06-21 09:41:52] [scraper.notaires] INFO [OFFICE] 105/242 | email=oui | office=Office notarial LUMEN NOTAIRES, SELARL à LYON (69008) | 2 Avenue des Frères Lumi
+[2026-06-21 09:41:54] [scraper.notaires] INFO [OFFICE] 106/242 | email=oui | office=Office notarial Maître MILESI Notaire, SARL à SATHONAY-CAMP (69580) | 9 Avenue F
+[2026-06-21 09:41:55] [scraper.notaires] INFO [OFFICE] 107/242 | email=oui | office=Office notarial MARECHAL Thibault à LYON (69002) | 56 Cours Charlemagne
+[2026-06-21 09:41:56] [scraper.notaires] INFO [OFFICE] 108/242 | email=oui | office=Office notarial MARIOTTE Stéphanie à LYON (69006) | 10 Boulevard Jules Favre
+[2026-06-21 09:41:57] [scraper.notaires] INFO [OFFICE] 109/242 | email=oui | office=Office notarial MATA Victoria à LYON (69008) | 310 Avenue Berthelot
+[2026-06-21 09:41:59] [scraper.notaires] INFO [OFFICE] 110/242 | email=oui | office=Office notarial MAUGAIN NOTAIRES, SELARL à LYON (69003) | 34 cours Lafayette
+[2026-06-21 09:42:00] [scraper.notaires] INFO [OFFICE] 111/242 | email=oui | office=Office notarial MERMET Pierre à LIMAS (69400) | 84 rue Henri Dépagneux
+[2026-06-21 09:42:02] [scraper.notaires] INFO [OFFICE] 112/242 | email=oui | office=Office notarial MESSERI Aurore à LYON (69003) | 6 cours de la Liberté
+[2026-06-21 09:42:03] [scraper.notaires] INFO [OFFICE] 113/242 | email=oui | office=Office notarial MONTEL Hélène à VERNAISON (69390) | 336 rue de la Fée des Eaux
+[2026-06-21 09:42:05] [scraper.notaires] INFO [OFFICE] 114/242 | email=oui | office=Office notarial MOREL Laetitia à LYON (69003) | 127 cours du Docteur Long
+[2026-06-21 09:42:07] [scraper.notaires] INFO [OFFICE] 115/242 | email=oui | office=Office notarial MURANA-CHARLUET Raphaëlle à SAINT-DIDIER-AU-MONT-D'OR (69370) | 
+[2026-06-21 09:42:08] [scraper.notaires] INFO [OFFICE] 116/242 | email=oui | office=Office notarial MURAT Marie-Pierre à VILLEURBANNE (69100) | 109 Cours Emile Zola
+[2026-06-21 09:42:10] [scraper.notaires] INFO [OFFICE] 117/242 | email=oui | office=Office notarial NARDINI Magali à CHAZAY-D'AZERGUES (69380) | 9 rue Marius Berlie
+[2026-06-21 09:42:11] [scraper.notaires] INFO [OFFICE] 118/242 | email=oui | office=Office notarial NICOLLE et associés à LYON (69003) | 90 rue Paul Bert
+[2026-06-21 09:42:13] [scraper.notaires] INFO [OFFICE] 119/242 | email=oui | office=Office notarial NOHARET Françoise à LYON (69007) | 200 AVENUE JEAN JAURES
+[2026-06-21 09:42:14] [scraper.notaires] INFO [OFFICE] 120/242 | email=oui | office=Office notarial NOT’ACTES MARCY à MARCY (69480) | 20, Rue de la Tour
+[2026-06-21 09:42:16] [scraper.notaires] INFO [OFFICE] 121/242 | email=oui | office=Office notarial NOTAEM et associés à SAINT-CYR-AU-MONT-D'OR (69450) | 1 rue Reyn
+[2026-06-21 09:42:17] [scraper.notaires] INFO [OFFICE] 122/242 | email=oui | office=Office notarial NOTAIRES GAMBETTA à VILLEFRANCHE-SUR-SAÔNE (69400) | 257 rue Boi
+[2026-06-21 09:42:19] [scraper.notaires] INFO [OFFICE] 123/242 | email=oui | office=Office notarial NOTARA à LYON (69007) | 152 Grande Rue de la Guillotière
+[2026-06-21 09:42:20] [scraper.notaires] INFO [OFFICE] 124/242 | email=oui | office=Office notarial ODO, notaire à THIZY-LES-BOURGS (69240) | 47 RUE JEAN JAURES
+[2026-06-21 09:42:22] [scraper.notaires] INFO [OFFICE] 125/242 | email=oui | office=Office notarial OFFICE NOTARIAL DE PRESSENSE, SELARL à VILLEURBANNE (69100) | 46
+[2026-06-21 09:42:23] [scraper.notaires] INFO [OFFICE] 126/242 | email=oui | office=Office notarial OFFICE NOTARIAL DES CHARPENNES-VILLEURBANNE, SELARL à VILLEURBAN
+[2026-06-21 09:42:25] [scraper.notaires] INFO [OFFICE] 127/242 | email=non | office=Office notarial Office Notarial des Jacobins, SAS à LYON (69002) | 8 place des J
+[2026-06-21 09:42:26] [scraper.notaires] INFO [OFFICE] 128/242 | email=oui | office=Office notarial OFFICE NOTARIAL DU PAYS ARBRESLOIS, SELARL à L'ARBRESLE (69210) 
+[2026-06-21 09:42:28] [scraper.notaires] INFO [OFFICE] 129/242 | email=oui | office=Office notarial OFFICE ROOSEVELT et associés, SELARL à LYON (69006) | 24 Cours F
+[2026-06-21 09:42:29] [scraper.notaires] INFO [OFFICE] 130/242 | email=oui | office=Office notarial ONPC NOTAIRES, SELARL à LYON (69006) | 58 rue Tête d'Or
+[2026-06-21 09:42:31] [scraper.notaires] INFO [OFFICE] 131/242 | email=oui | office=Office notarial PARISET, Notaire, SARL à LYON (69001) | 2 rue de Provence
+[2026-06-21 09:42:32] [scraper.notaires] INFO [OFFICE] 132/242 | email=oui | office=Office notarial PARTOUCHE Sébastien à LISSIEU (69380) | 101 Route Nationale 6
+[2026-06-21 09:42:34] [scraper.notaires] INFO [OFFICE] 133/242 | email=oui | office=Office notarial PAUL & associés – Notaires Lyon, SELAS à LYON (69009) | 28 rue J
+[2026-06-21 09:42:36] [scraper.notaires] INFO [OFFICE] 134/242 | email=oui | office=Office notarial PCMV NOTAIRES, SARL à LYON (69004) | 18/19 Place de la Croix Rou
+[2026-06-21 09:42:37] [scraper.notaires] INFO [OFFICE] 135/242 | email=oui | office=Office notarial PERRAUD & Associés - Notaires, SAS à LYON (69003) | 19 boulevard
+[2026-06-21 09:42:39] [scraper.notaires] INFO [OFFICE] 136/242 | email=oui | office=Office notarial PESSIA Faustine à DOMMARTIN (69380) | 1702 route des Bois
+[2026-06-21 09:42:40] [scraper.notaires] INFO [OFFICE] 137/242 | email=oui | office=Office notarial PICOT Laura à LYON (69006) | 63 rue Boileau
+[2026-06-21 09:42:42] [scraper.notaires] INFO [OFFICE] 138/242 | email=oui | office=Office notarial PROUVOST-CLAEYS, SAS à associé unique à L'ARBRESLE (69210) | 193
+[2026-06-21 09:42:44] [scraper.notaires] INFO [OFFICE] 139/242 | email=oui | office=Office notarial RAY et associé, SELARL à SAINT-FONS (69190) | 1 Avenue Jean Jaur
+[2026-06-21 09:42:46] [scraper.notaires] INFO [OFFICE] 140/242 | email=oui | office=Office notarial REAL LEX Notaires à CRAPONNE (69290) | 123 AVENUE PIERRE DUMOND
+[2026-06-21 09:42:47] [scraper.notaires] INFO [OFFICE] 141/242 | email=oui | office=Office notarial REBMANN Fanny à LYON (69004) | 32 rue Jacques-Louis Hénon
+[2026-06-21 09:42:49] [scraper.notaires] INFO [OFFICE] 142/242 | email=oui | office=Office notarial REBOTIER PERET LEVRAULT ET MERLE NOTAIRES ASSOCIES, SELARL à LYO
+[2026-06-21 09:42:51] [scraper.notaires] INFO [OFFICE] 143/242 | email=oui | office=Office notarial RENETEAU Anaïs à CHAPONOST (69630) | 1 Route des Troques
+[2026-06-21 09:42:52] [scraper.notaires] INFO [OFFICE] 144/242 | email=oui | office=Office notarial REY Karyne à LYON (69002) | 3 rue Victor Hugo
+[2026-06-21 09:42:54] [scraper.notaires] INFO [OFFICE] 145/242 | email=oui | office=Office notarial ROBIN Axel à LYON (69003) | 123 cours Albert Thomas
+[2026-06-21 09:42:55] [scraper.notaires] INFO [OFFICE] 146/242 | email=oui | office=Office notarial ROCHELOIS LYON, SELAS à LYON (69003) | 10-12 boulevard Marius Vi
+[2026-06-21 09:42:57] [scraper.notaires] INFO [OFFICE] 147/242 | email=oui | office=Office notarial ROSTAING-MUSSIO et associée, SELARL à LYON (69003) | 40 Rue Anto
+[2026-06-21 09:42:58] [scraper.notaires] INFO [OFFICE] 148/242 | email=oui | office=Office notarial RUCHON Edouard à LYON (69005) | 60 avenue du Point du Jour
+[2026-06-21 09:43:00] [scraper.notaires] INFO [OFFICE] 149/242 | email=oui | office=Office notarial S2R NOTAIRES CONSEILS, SELARL à LYON (69006) | 50 boulevard des 
+[2026-06-21 09:43:01] [scraper.notaires] INFO [OFFICE] 150/242 | email=oui | office=Office notarial SALAGNAT Frédéric à CHASSIEU (69680) | 56 route de Genas
+[2026-06-21 09:43:01] [scraper.notaires] INFO flush : total=150 (inserted=0 updated=150 unchanged=0)
+[2026-06-21 09:43:03] [scraper.notaires] INFO [OFFICE] 151/242 | email=oui | office=Office notarial SALICHON & ASSOCIES, SARL à LYON (69006) | 3 Cours Franklin Roos
+[2026-06-21 09:43:05] [scraper.notaires] INFO [OFFICE] 152/242 | email=oui | office=Office notarial SARL à associé unique GONDRAN, notaire associée à BELLEVILLE (69
+[2026-06-21 09:43:07] [scraper.notaires] INFO [OFFICE] 153/242 | email=oui | office=Office notarial SARL à associé unique Notaires du Promenoir à VILLEFRANCHE-SUR-S
+[2026-06-21 09:43:09] [scraper.notaires] INFO [OFFICE] 154/242 | email=oui | office=Office notarial SARL à associé unique OFFICE NOTARIAL DE LA TABLE DE PIERRE à FR
+[2026-06-21 09:43:10] [scraper.notaires] INFO [OFFICE] 155/242 | email=oui | office=Office notarial SARL à associée unique NOTAIRE VALLE D'AZERGUES à LAMURE-SUR-AZE
+[2026-06-21 09:43:12] [scraper.notaires] INFO [OFFICE] 156/242 | email=oui | office=Office notarial SARL CADRAN Notaires Conseils à LYON (69007) | 75 rue Chevreul
+[2026-06-21 09:43:14] [scraper.notaires] INFO [OFFICE] 157/242 | email=oui | office=Office notarial SARL CADRAN Notaires Conseils à TASSIN-LA-DEMI-LUNE (69160) | 3 
+[2026-06-21 09:43:16] [scraper.notaires] INFO [OFFICE] 158/242 | email=oui | office=Office notarial SARL CHAINE ET ASSOCIES NOTAIRES à LYON (69006) | 139 rue Vendôm
+[2026-06-21 09:43:17] [scraper.notaires] INFO [OFFICE] 159/242 | email=oui | office=Office notarial SARL GAMBIEZ - COTTE - Notaires Champagne au Mont d’Or à CHAMPAG
+[2026-06-21 09:43:19] [scraper.notaires] INFO [OFFICE] 160/242 | email=oui | office=Office notarial SARL HYVERNAT - CARNIEL - TAITHE - GAILLARD-DEBIESSE – NOTAIRES 
+[2026-06-21 09:43:20] [scraper.notaires] INFO [OFFICE] 161/242 | email=oui | office=Office notarial SARL HYVERNAT - CARNIEL - TAITHE - GAILLARD-DEBIESSE – NOTAIRES 
+[2026-06-21 09:43:22] [scraper.notaires] INFO [OFFICE] 162/242 | email=oui | office=Office notarial SARL LES AUTHENTIQUES et associés à CAILLOUX-SUR-FONTAINES (6927
+[2026-06-21 09:43:24] [scraper.notaires] INFO [OFFICE] 163/242 | email=oui | office=Office notarial SARL LOVY et associés à FONTAINES-SUR-SAÔNE (69270) | 37 B RUE P
+[2026-06-21 09:43:25] [scraper.notaires] INFO [OFFICE] 164/242 | email=oui | office=Office notarial SARL NOTAIRE LYON BUGEAUD à LYON (69006) | 51 rue Bugeaud
+[2026-06-21 09:43:26] [scraper.notaires] INFO [OFFICE] 165/242 | email=oui | office=Office notarial SARL NOTAIRES FOCH à LYON (69006) | 5 cours Franklin Roosevelt
+[2026-06-21 09:43:28] [scraper.notaires] INFO [OFFICE] 166/242 | email=oui | office=Office notarial SARL NOTAMIONS Valérie JACQUE et Associés à MIONS (69780) | 19 R
+[2026-06-21 09:43:30] [scraper.notaires] INFO [OFFICE] 167/242 | email=oui | office=Office notarial SARL O.M.L. - NOTAIRES à SAINT-MARTIN-EN-HAUT (69850) | 11 route
+[2026-06-21 09:43:31] [scraper.notaires] INFO [OFFICE] 168/242 | email=oui | office=Office notarial SARL PERROT & associé à LYON (69002) | 1 rue Tupin
+[2026-06-21 09:43:33] [scraper.notaires] INFO [OFFICE] 169/242 | email=oui | office=Office notarial SARL THIVEL NOTAIRES à LYON (69002) | 27 rue Ferrandière
+[2026-06-21 09:43:34] [scraper.notaires] INFO [OFFICE] 170/242 | email=oui | office=Office notarial SARL THIVEL NOTAIRES à TARARE (69170) | 2 boulevard du Commandan
+[2026-06-21 09:43:36] [scraper.notaires] INFO [OFFICE] 171/242 | email=oui | office=Office notarial SAS ADEVODENCE à FRANCHEVILLE (69340) | 8 route du Bruissin
+[2026-06-21 09:43:38] [scraper.notaires] INFO [OFFICE] 172/242 | email=oui | office=Office notarial SAS BREMENS NOTAIRES à LYON (69006) | 45 quai Charles de Gaulle
+[2026-06-21 09:43:40] [scraper.notaires] INFO [OFFICE] 173/242 | email=oui | office=Office notarial SAS a contrario à LYON (69002) | 21 rue Ferrandière
+[2026-06-21 09:43:42] [scraper.notaires] INFO [OFFICE] 174/242 | email=oui | office=Office notarial SAS des CEDRES à TASSIN-LA-DEMI-LUNE (69160) | 93 avenue du 11 N
+[2026-06-21 09:43:43] [scraper.notaires] INFO [OFFICE] 175/242 | email=oui | office=Office notarial SAS EFFICIENCE LYON à LYON (69002) | 50 rue de la République
+[2026-06-21 09:43:45] [scraper.notaires] INFO [OFFICE] 176/242 | email=non | office=Office notarial SAS MOREL-VULLIEZ et associées à LYON (69006) | 13 bis place Jul
+[2026-06-21 09:43:47] [scraper.notaires] INFO [OFFICE] 177/242 | email=oui | office=Office notarial SAS NOTAIRES DU VAL DU RHONE à VERNAISON (69390) | 1 SQUARE CARD
+[2026-06-21 09:43:49] [scraper.notaires] INFO [OFFICE] 178/242 | email=oui | office=Office notarial SAS NOTLEX à LYON (69003) | 41 rue de Bonnel
+[2026-06-21 09:43:50] [scraper.notaires] INFO [OFFICE] 179/242 | email=oui | office=Office notarial SCHIBLER-JACQUET et associée à SAINT-PIERRE-DE-CHANDIEU (69780) 
+[2026-06-21 09:43:51] [scraper.notaires] INFO [OFFICE] 180/242 | email=oui | office=Office notarial SCP Carole POULAIN-CHARPENTIER, Guillaume BONFILS, Romain THOLON
+[2026-06-21 09:43:52] [scraper.notaires] INFO [OFFICE] 181/242 | email=oui | office=Office notarial SCP Emmanuel de BAILLIENCOURT, Christophe RICHARD, Dimitri JANIN
+[2026-06-21 09:43:54] [scraper.notaires] INFO [OFFICE] 182/242 | email=oui | office=Office notarial SCP Lionel ROBIN et Florence BOACHON, Notaires associés à CALUIR
+[2026-06-21 09:43:55] [scraper.notaires] INFO [OFFICE] 183/242 | email=oui | office=Office notarial SDV NOTAIRES, SELAS à LYON (69003) | 54 cours Lafayette
+[2026-06-21 09:43:57] [scraper.notaires] INFO [OFFICE] 184/242 | email=oui | office=Office notarial SEL, NOTAIRES DE CHAPONNAY, SARL à CHAPONNAY (69970) | 22 rue de
+[2026-06-21 09:43:58] [scraper.notaires] INFO [OFFICE] 185/242 | email=oui | office=Office notarial SELARL 1629 NOTAIRES à LYON (69001) | 9 rue du Bât d'Argent
+[2026-06-21 09:44:00] [scraper.notaires] INFO [OFFICE] 186/242 | email=oui | office=Office notarial SELARL 1979 NOT’ACTES, Notaires à LA MULATIERE à LA MULATIÈRE (6
+[2026-06-21 09:44:01] [scraper.notaires] INFO [OFFICE] 187/242 | email=oui | office=Office notarial SELARL ACTALION Notaires à LYON (69003) | 1 rue Montébello
+[2026-06-21 09:44:03] [scraper.notaires] INFO [OFFICE] 188/242 | email=oui | office=Office notarial SELARL AJC NOTAIRES à CALUIRE-ET-CUIRE (69300) | 13 rue Jean Mou
+[2026-06-21 09:44:04] [scraper.notaires] INFO [OFFICE] 189/242 | email=oui | office=Office notarial SELARL ALEXANDRE BRUYERE ET THOMAS BOURLIERE à LYON (69007) | 28
+[2026-06-21 09:44:06] [scraper.notaires] INFO [OFFICE] 190/242 | email=oui | office=Office notarial SELARL BCA NOTAIRES à LYON (69002) | 5 place Bellecour
+[2026-06-21 09:44:07] [scraper.notaires] INFO [OFFICE] 191/242 | email=oui | office=Office notarial SELARL CARBONNEL & FREMONT - Notaires à SAINTE-FOY-LÈS-LYON (691
+[2026-06-21 09:44:09] [scraper.notaires] INFO [OFFICE] 192/242 | email=oui | office=Office notarial SELARL Caroline MARCHAIS-EPARVIER et Sylvain EPARVIER à TASSIN-L
+[2026-06-21 09:44:10] [scraper.notaires] INFO [OFFICE] 193/242 | email=oui | office=Office notarial SELARL Des Paroles & Des Actes à LYON (69006) | 111 rue Bugeaud
+[2026-06-21 09:44:12] [scraper.notaires] INFO [OFFICE] 194/242 | email=oui | office=Office notarial SELARL Des Paroles & Des Actes à SAINTE-COLOMBE (69560) | 49 rue
+[2026-06-21 09:44:13] [scraper.notaires] INFO [OFFICE] 195/242 | email=oui | office=Office notarial SELARL ENTANDEM NOTAIRES à SAINT-GERMAIN-AU-MONT-D'OR (69650) | 
+[2026-06-21 09:44:15] [scraper.notaires] INFO [OFFICE] 196/242 | email=oui | office=Office notarial SELARL ENTANDEM NOTAIRES à LYON (69006) | 50 cours Franklin Roos
+[2026-06-21 09:44:16] [scraper.notaires] INFO [OFFICE] 197/242 | email=oui | office=Office notarial SELARL ETUDE BLANC à OULLINS-PIERRE-BÉNITE - OULLINS (69600) | 1
+[2026-06-21 09:44:18] [scraper.notaires] INFO [OFFICE] 198/242 | email=oui | office=Office notarial SELARL Fideis Notaires à SAINTE-FOY-LÈS-LYON (69110) | 18 Place 
+[2026-06-21 09:44:19] [scraper.notaires] INFO [OFFICE] 199/242 | email=oui | office=Office notarial SELARL GAUMIER NOTAIRES à LYON (69009) | 18 quai Jaÿr
+[2026-06-21 09:44:21] [scraper.notaires] INFO [OFFICE] 200/242 | email=oui | office=Office notarial SELARL Jean-Christophe HOCHE, Maxime CASTELLI et Denis MESTRALLE
+[2026-06-21 09:44:21] [scraper.notaires] INFO flush : total=200 (inserted=0 updated=200 unchanged=0)
+[2026-06-21 09:44:23] [scraper.notaires] INFO [OFFICE] 201/242 | email=oui | office=Office notarial SELARL LEMBREZ et Associés, Notaires à LYON (69004) | 5 rue Duvi
+[2026-06-21 09:44:24] [scraper.notaires] INFO [OFFICE] 202/242 | email=oui | office=Office notarial SELARL NOTAIRES CONDRIEU à CONDRIEU (69420) | 40 rue des Granges
+[2026-06-21 09:44:27] [scraper.notaires] INFO [OFFICE] 203/242 | email=oui | office=Office notarial SELARL NOTAIRES, Familles et Patrimoines à ARNAS (69400) | 61 ro
+[2026-06-21 09:44:29] [scraper.notaires] INFO [OFFICE] 204/242 | email=oui | office=Office notarial SELARL NOTAIRES, Familles et Patrimoines à BEAUJEU (69430) | 35 
+[2026-06-21 09:44:30] [scraper.notaires] INFO [OFFICE] 205/242 | email=oui | office=Office notarial SELARL NOTAIRES LYON CONFLUENCE à LYON (69002) | 72 Cours Charle
+[2026-06-21 09:44:32] [scraper.notaires] INFO [OFFICE] 206/242 | email=oui | office=Office notarial SELARL NOTAIRES LYON HOTEL-DIEU à LYON (69002) | 26 rue Bellecor
+[2026-06-21 09:44:34] [scraper.notaires] INFO [OFFICE] 207/242 | email=oui | office=Office notarial SELARL NOTASOL - NOTAIRES DU SUD OUEST LYONNAIS à BRIGNAIS (6953
+[2026-06-21 09:44:36] [scraper.notaires] INFO [OFFICE] 208/242 | email=oui | office=Office notarial SELARL OFFICE DE LA COLLINE à LYON (69004) | 57 rue Hénon
+[2026-06-21 09:44:38] [scraper.notaires] INFO [OFFICE] 209/242 | email=oui | office=Office notarial SELARL OFFICE DES LUMIERES à LYON (69004) | 84, quai Joseph Gill
+[2026-06-21 09:44:40] [scraper.notaires] INFO [OFFICE] 210/242 | email=oui | office=Office notarial SELARL Office notarial de Chaponost à CHAPONOST (69630) | 3 rue 
+[2026-06-21 09:44:42] [scraper.notaires] INFO [OFFICE] 211/242 | email=oui | office=Office notarial SELARL OFFICE NOTARIAL DE L'EUROPE à LYON (69003) | 62 rue de Bo
+[2026-06-21 09:44:43] [scraper.notaires] INFO [OFFICE] 212/242 | email=oui | office=Office notarial SELARL OFFICE NOTARIAL LA CALADE à VILLEFRANCHE-SUR-SAÔNE (69400
+[2026-06-21 09:44:46] [scraper.notaires] INFO [OFFICE] 213/242 | email=oui | office=Office notarial SELARL ONE NOTAIRES à ÉCULLY (69130) | 4 allée des Tullistes
+[2026-06-21 09:44:47] [scraper.notaires] INFO [OFFICE] 214/242 | email=oui | office=Office notarial SELARL Pascale BERTONI-OLMO, Jérôme GUILLARME, Gauthier DOLIGEZ 
+[2026-06-21 09:44:49] [scraper.notaires] INFO [OFFICE] 215/242 | email=oui | office=Office notarial SELARL Rémy SAMSON - Philippe DAVID - Catherine GASIOT-DAVID - P
+[2026-06-21 09:44:51] [scraper.notaires] INFO [OFFICE] 216/242 | email=oui | office=Office notarial SELARL ROUSSEAU-BRETON NOTAIRE à LYON (69002) | 32 rue de la Rép
+[2026-06-21 09:44:53] [scraper.notaires] INFO [OFFICE] 217/242 | email=oui | office=Office notarial SELARL YOHAN BURNICHON, NOTAIRE ET ASSOCIES à LYON (69001) | 9 r
+[2026-06-21 09:44:54] [scraper.notaires] INFO [OFFICE] 218/242 | email=oui | office=Office notarial SELAS ALCAIX à LYON (69006) | 91 Cours Lafayette
+[2026-06-21 09:44:55] [scraper.notaires] INFO [OFFICE] 219/242 | email=oui | office=Office notarial SELAS Althémis Lyon - Rhône-Alpes à LYON (69002) | 105 rue du Pr
+[2026-06-21 09:44:57] [scraper.notaires] INFO [OFFICE] 220/242 | email=oui | office=Office notarial SELAS BONNIE AOUN NOTAIRE ASSOCIÉ à LYON (69001) | 21 rue d'Algé
+[2026-06-21 09:44:59] [scraper.notaires] INFO [OFFICE] 221/242 | email=oui | office=Office notarial SELAS FIDAL NOTAIRES à LYON (69009) | 18 rue Félix Mangini
+[2026-06-21 09:45:01] [scraper.notaires] INFO [OFFICE] 222/242 | email=oui | office=Office notarial SELAS GAGNAIRE ASSOCIES NOTAIRES à MEYZIEU (69330) | 7 C rue de 
+[2026-06-21 09:45:02] [scraper.notaires] INFO [OFFICE] 223/242 | email=oui | office=Office notarial SELAS GAGNAIRE ASSOCIES NOTAIRES à SAINT-PRIEST (69800) | 8 rue 
+[2026-06-21 09:45:04] [scraper.notaires] INFO [OFFICE] 224/242 | email=oui | office=Office notarial SELAS Implid Notaires à LYON (69006) | 79 Cours Vitton
+[2026-06-21 09:45:06] [scraper.notaires] INFO [OFFICE] 225/242 | email=oui | office=Office notarial SELAS UP NOTAIRES à DÉCINES-CHARPIEU (69150) | 2 avenue Silvin
+[2026-06-21 09:45:08] [scraper.notaires] INFO [OFFICE] 226/242 | email=oui | office=Office notarial SELAS NOTAIRES DU VAL D'OUEST à VAUGNERAY (69670) | 2 Chemin des
+[2026-06-21 09:45:10] [scraper.notaires] INFO [OFFICE] 227/242 | email=oui | office=Office notarial SELAS NOTAIRES DU VAL D'OUEST à BRINDAS (69126) | 20 Chemin des 
+[2026-06-21 09:45:12] [scraper.notaires] INFO [OFFICE] 228/242 | email=oui | office=Office notarial SELAS NOTALMA à LYON (69002) | 6 place Carnot
+[2026-06-21 09:45:13] [scraper.notaires] INFO [OFFICE] 229/242 | email=oui | office=Office notarial SIDI-BOULENOUAR Dounia à LYON (69007) | 17 rue Crépet
+[2026-06-21 09:45:15] [scraper.notaires] INFO [OFFICE] 230/242 | email=oui | office=Office notarial SIMON et associés, SELARL à LYON (69005) | 49 avenue du Point du
+[2026-06-21 09:45:17] [scraper.notaires] INFO [OFFICE] 231/242 | email=oui | office=Office notarial SOCIETE BNO, SELARL à ÉCULLY (69130) | 1 Chemin Jean-Marie Viann
+[2026-06-21 09:45:18] [scraper.notaires] INFO [OFFICE] 232/242 | email=oui | office=Office notarial SOUBEYRAN et associés, SELARL à LYON (69008) | 33 RUE DES TUILIE
+[2026-06-21 09:45:20] [scraper.notaires] INFO [OFFICE] 233/242 | email=oui | office=Office notarial SPE SAS Quante à LYON (69001) | 21 rue d'Algérie
+[2026-06-21 09:45:22] [scraper.notaires] INFO [OFFICE] 234/242 | email=oui | office=Office notarial THEVENON Eric à LYON (69004) | 17 Place Tabareau
+[2026-06-21 09:45:24] [scraper.notaires] INFO [OFFICE] 235/242 | email=non | office=Office notarial THIOLLIER Associés, SARL à SAINT-SYMPHORIEN-SUR-COISE (69590) | 
+[2026-06-21 09:45:25] [scraper.notaires] INFO [OFFICE] 236/242 | email=oui | office=Office notarial TOLLET & VIENNET NOTAIRES à IRIGNY (69540) | 10 Bis Rue Baudrand
+[2026-06-21 09:45:26] [scraper.notaires] INFO [OFFICE] 237/242 | email=oui | office=Office notarial TRICHET Sarah à LYON (69009) | 20 rue Louis Loucheur
+[2026-06-21 09:45:28] [scraper.notaires] INFO [OFFICE] 238/242 | email=oui | office=Office notarial VAUDO Johan à DÉCINES-CHARPIEU (69150) | 32 rue de la République
+[2026-06-21 09:45:29] [scraper.notaires] INFO [OFFICE] 239/242 | email=oui | office=Office notarial VICARI, SARL à associé unique à SAINT GERMAIN AU MONT D'OR (6965
+[2026-06-21 09:45:31] [scraper.notaires] INFO [OFFICE] 240/242 | email=oui | office=Office notarial VRIGNAUD Antoine à CHAMPAGNE-AU-MONT-D'OR (69410) | 18 rue Domin
+[2026-06-21 09:45:33] [scraper.notaires] INFO [OFFICE] 241/242 | email=oui | office=Office notarial VULPAT Catherine à LYON (69003) | 53 Cours Richard Vitton
+[2026-06-21 09:45:35] [scraper.notaires] INFO [OFFICE] 242/242 | email=oui | office=Office notarial WAGENHEIM Adeline à LYON (69001) | 14 rue de l'Arbre Sec
+[2026-06-21 09:45:35] [scraper.notaires] INFO Fin scraper 'notaires' : inserted=0, updated=242, unchanged=0, stale=0
+[2026-06-21 09:45:36] [scraper.notaires] INFO CSV exporté : exports/notaires/annuaire_notaires_france.csv (242 lignes)
+[2026-06-21 09:45:36] [scraper.notaires] INFO JSONL exporté : exports/notaires/annuaire_notaires_france.jsonl (242 lignes)
+[2026-06-21 09:45:36] [scraper.notaires] INFO XLSX exporté : exports/notaires/annuaire_notaires_france.xlsx (242 lignes)
