@@ -462,3 +462,119 @@
 [2026-06-28 09:05:47] [scraper.immo] INFO CSV exporté : exports/immo/base_prospection_immomatin.csv (881 lignes)
 [2026-06-28 09:05:47] [scraper.immo] INFO JSONL exporté : exports/immo/base_prospection_immomatin.jsonl (881 lignes)
 [2026-06-28 09:05:48] [scraper.immo] INFO XLSX exporté : exports/immo/base_prospection_immomatin.xlsx (881 lignes)
+[2026-07-05 08:52:52] [scraper.immo] INFO ======================================================================
+[2026-07-05 08:52:52] [scraper.immo] INFO Démarrage scraper 'immo' (mode=update, test=False)
+[2026-07-05 08:52:52] [scraper.immo] INFO DB : /home/runner/work/RAPS-Prospection/RAPS-Prospection/data/immo.db
+[2026-07-05 08:52:52] [scraper.immo] INFO run_id = c3128ef7ebc84ed2
+[2026-07-05 08:52:53] [scraper.immo] INFO [PAGE 001] 10 fiches trouvées
+[2026-07-05 08:53:06] [scraper.immo] INFO [PAGE 002] 10 fiches trouvées
+[2026-07-05 08:53:17] [scraper.immo] INFO [PAGE 003] 10 fiches trouvées
+[2026-07-05 08:53:28] [scraper.immo] INFO [PAGE 004] 10 fiches trouvées
+[2026-07-05 08:53:37] [scraper.immo] INFO [PAGE 005] 10 fiches trouvées
+[2026-07-05 08:53:44] [scraper.immo] INFO flush : total=50 (inserted=0 updated=0 unchanged=50)
+[2026-07-05 08:53:47] [scraper.immo] INFO [PAGE 006] 10 fiches trouvées
+[2026-07-05 08:53:57] [scraper.immo] INFO [PAGE 007] 10 fiches trouvées
+[2026-07-05 08:54:06] [scraper.immo] INFO [PAGE 008] 10 fiches trouvées
+[2026-07-05 08:54:16] [scraper.immo] INFO [PAGE 009] 10 fiches trouvées
+[2026-07-05 08:54:29] [scraper.immo] INFO [PAGE 010] 10 fiches trouvées
+[2026-07-05 08:54:37] [scraper.immo] INFO flush : total=100 (inserted=0 updated=0 unchanged=100)
+[2026-07-05 08:54:39] [scraper.immo] INFO [PAGE 011] 10 fiches trouvées
+[2026-07-05 08:54:50] [scraper.immo] INFO [PAGE 012] 10 fiches trouvées
+[2026-07-05 08:55:01] [scraper.immo] INFO [PAGE 013] 10 fiches trouvées
+[2026-07-05 08:55:13] [scraper.immo] INFO [PAGE 014] 10 fiches trouvées
+[2026-07-05 08:55:23] [scraper.immo] INFO [PAGE 015] 10 fiches trouvées
+[2026-07-05 08:55:31] [scraper.immo] INFO flush : total=150 (inserted=0 updated=0 unchanged=150)
+[2026-07-05 08:55:33] [scraper.immo] INFO [PAGE 016] 10 fiches trouvées
+[2026-07-05 08:55:44] [scraper.immo] INFO [PAGE 017] 10 fiches trouvées
+[2026-07-05 08:55:54] [scraper.immo] INFO [PAGE 018] 10 fiches trouvées
+[2026-07-05 08:56:05] [scraper.immo] INFO [PAGE 019] 10 fiches trouvées
+[2026-07-05 08:56:18] [scraper.immo] INFO [PAGE 020] 10 fiches trouvées
+[2026-07-05 08:56:26] [scraper.immo] INFO flush : total=200 (inserted=1 updated=4 unchanged=195)
+[2026-07-05 08:56:28] [scraper.immo] INFO [PAGE 021] 10 fiches trouvées
+[2026-07-05 08:56:38] [scraper.immo] INFO [PAGE 022] 10 fiches trouvées
+[2026-07-05 08:56:48] [scraper.immo] INFO [PAGE 023] 10 fiches trouvées
+[2026-07-05 08:56:58] [scraper.immo] INFO [PAGE 024] 10 fiches trouvées
+[2026-07-05 08:57:08] [scraper.immo] INFO [PAGE 025] 10 fiches trouvées
+[2026-07-05 08:57:17] [scraper.immo] INFO flush : total=250 (inserted=1 updated=9 unchanged=240)
+[2026-07-05 08:57:18] [scraper.immo] INFO [PAGE 026] 10 fiches trouvées
+[2026-07-05 08:57:29] [scraper.immo] INFO [PAGE 027] 10 fiches trouvées
+[2026-07-05 08:57:37] [scraper.immo] INFO [PAGE 028] 10 fiches trouvées
+[2026-07-05 08:57:48] [scraper.immo] INFO [PAGE 029] 10 fiches trouvées
+[2026-07-05 08:57:59] [scraper.immo] INFO [PAGE 030] 10 fiches trouvées
+[2026-07-05 08:58:08] [scraper.immo] INFO flush : total=300 (inserted=1 updated=14 unchanged=285)
+[2026-07-05 08:58:10] [scraper.immo] INFO [PAGE 031] 10 fiches trouvées
+[2026-07-05 08:58:21] [scraper.immo] INFO [PAGE 032] 10 fiches trouvées
+[2026-07-05 08:58:30] [scraper.immo] INFO [PAGE 033] 10 fiches trouvées
+[2026-07-05 08:58:39] [scraper.immo] INFO [PAGE 034] 10 fiches trouvées
+[2026-07-05 08:58:49] [scraper.immo] INFO [PAGE 035] 10 fiches trouvées
+[2026-07-05 08:58:57] [scraper.immo] INFO flush : total=350 (inserted=1 updated=19 unchanged=330)
+[2026-07-05 08:58:59] [scraper.immo] INFO [PAGE 036] 10 fiches trouvées
+[2026-07-05 08:59:09] [scraper.immo] INFO [PAGE 037] 10 fiches trouvées
+[2026-07-05 08:59:19] [scraper.immo] INFO [PAGE 038] 10 fiches trouvées
+[2026-07-05 08:59:29] [scraper.immo] INFO [PAGE 039] 10 fiches trouvées
+[2026-07-05 08:59:39] [scraper.immo] INFO [PAGE 040] 10 fiches trouvées
+[2026-07-05 08:59:49] [scraper.immo] INFO flush : total=400 (inserted=1 updated=24 unchanged=375)
+[2026-07-05 08:59:51] [scraper.immo] INFO [PAGE 041] 10 fiches trouvées
+[2026-07-05 09:00:02] [scraper.immo] INFO [PAGE 042] 10 fiches trouvées
+[2026-07-05 09:00:15] [scraper.immo] INFO [PAGE 043] 10 fiches trouvées
+[2026-07-05 09:00:27] [scraper.immo] INFO [PAGE 044] 10 fiches trouvées
+[2026-07-05 09:00:39] [scraper.immo] INFO [PAGE 045] 10 fiches trouvées
+[2026-07-05 09:00:46] [scraper.immo] INFO flush : total=450 (inserted=1 updated=29 unchanged=420)
+[2026-07-05 09:00:48] [scraper.immo] INFO [PAGE 046] 10 fiches trouvées
+[2026-07-05 09:00:58] [scraper.immo] INFO [PAGE 047] 10 fiches trouvées
+[2026-07-05 09:01:09] [scraper.immo] INFO [PAGE 048] 10 fiches trouvées
+[2026-07-05 09:01:20] [scraper.immo] INFO [PAGE 049] 10 fiches trouvées
+[2026-07-05 09:01:30] [scraper.immo] INFO [PAGE 050] 10 fiches trouvées
+[2026-07-05 09:01:38] [scraper.immo] INFO flush : total=500 (inserted=1 updated=34 unchanged=465)
+[2026-07-05 09:01:40] [scraper.immo] INFO [PAGE 051] 10 fiches trouvées
+[2026-07-05 09:01:50] [scraper.immo] INFO [PAGE 052] 10 fiches trouvées
+[2026-07-05 09:02:02] [scraper.immo] INFO [PAGE 053] 10 fiches trouvées
+[2026-07-05 09:02:11] [scraper.immo] INFO [PAGE 054] 10 fiches trouvées
+[2026-07-05 09:02:21] [scraper.immo] INFO [PAGE 055] 10 fiches trouvées
+[2026-07-05 09:02:30] [scraper.immo] INFO flush : total=550 (inserted=1 updated=39 unchanged=510)
+[2026-07-05 09:02:32] [scraper.immo] INFO [PAGE 056] 10 fiches trouvées
+[2026-07-05 09:02:42] [scraper.immo] INFO [PAGE 057] 10 fiches trouvées
+[2026-07-05 09:02:54] [scraper.immo] INFO [PAGE 058] 10 fiches trouvées
+[2026-07-05 09:03:05] [scraper.immo] INFO [PAGE 059] 10 fiches trouvées
+[2026-07-05 09:03:15] [scraper.immo] INFO [PAGE 060] 10 fiches trouvées
+[2026-07-05 09:03:23] [scraper.immo] INFO flush : total=600 (inserted=1 updated=44 unchanged=555)
+[2026-07-05 09:03:25] [scraper.immo] INFO [PAGE 061] 10 fiches trouvées
+[2026-07-05 09:03:35] [scraper.immo] INFO [PAGE 062] 10 fiches trouvées
+[2026-07-05 09:03:46] [scraper.immo] INFO [PAGE 063] 10 fiches trouvées
+[2026-07-05 09:03:55] [scraper.immo] INFO [PAGE 064] 10 fiches trouvées
+[2026-07-05 09:04:06] [scraper.immo] INFO [PAGE 065] 10 fiches trouvées
+[2026-07-05 09:04:13] [scraper.immo] INFO flush : total=650 (inserted=1 updated=49 unchanged=600)
+[2026-07-05 09:04:19] [scraper.immo] INFO [PAGE 066] 10 fiches trouvées
+[2026-07-05 09:04:30] [scraper.immo] INFO [PAGE 067] 10 fiches trouvées
+[2026-07-05 09:04:40] [scraper.immo] INFO [PAGE 068] 10 fiches trouvées
+[2026-07-05 09:04:50] [scraper.immo] INFO [PAGE 069] 10 fiches trouvées
+[2026-07-05 09:05:00] [scraper.immo] INFO [PAGE 070] 10 fiches trouvées
+[2026-07-05 09:05:10] [scraper.immo] INFO flush : total=700 (inserted=1 updated=54 unchanged=645)
+[2026-07-05 09:05:12] [scraper.immo] INFO [PAGE 071] 10 fiches trouvées
+[2026-07-05 09:05:22] [scraper.immo] INFO [PAGE 072] 10 fiches trouvées
+[2026-07-05 09:05:32] [scraper.immo] INFO [PAGE 073] 10 fiches trouvées
+[2026-07-05 09:05:43] [scraper.immo] INFO [PAGE 074] 10 fiches trouvées
+[2026-07-05 09:05:51] [scraper.immo] INFO [PAGE 075] 10 fiches trouvées
+[2026-07-05 09:06:00] [scraper.immo] INFO flush : total=750 (inserted=1 updated=59 unchanged=690)
+[2026-07-05 09:06:02] [scraper.immo] INFO [PAGE 076] 10 fiches trouvées
+[2026-07-05 09:06:12] [scraper.immo] INFO [PAGE 077] 10 fiches trouvées
+[2026-07-05 09:06:22] [scraper.immo] INFO [PAGE 078] 10 fiches trouvées
+[2026-07-05 09:06:31] [scraper.immo] INFO [PAGE 079] 10 fiches trouvées
+[2026-07-05 09:06:41] [scraper.immo] INFO [PAGE 080] 10 fiches trouvées
+[2026-07-05 09:06:49] [scraper.immo] INFO flush : total=800 (inserted=1 updated=64 unchanged=735)
+[2026-07-05 09:06:51] [scraper.immo] INFO [PAGE 081] 10 fiches trouvées
+[2026-07-05 09:07:01] [scraper.immo] INFO [PAGE 082] 10 fiches trouvées
+[2026-07-05 09:07:11] [scraper.immo] INFO [PAGE 083] 10 fiches trouvées
+[2026-07-05 09:07:21] [scraper.immo] INFO [PAGE 084] 10 fiches trouvées
+[2026-07-05 09:07:33] [scraper.immo] INFO [PAGE 085] 10 fiches trouvées
+[2026-07-05 09:07:42] [scraper.immo] INFO flush : total=850 (inserted=1 updated=69 unchanged=780)
+[2026-07-05 09:07:43] [scraper.immo] INFO [PAGE 086] 10 fiches trouvées
+[2026-07-05 09:07:54] [scraper.immo] INFO [PAGE 087] 10 fiches trouvées
+[2026-07-05 09:08:03] [scraper.immo] INFO [PAGE 088] 10 fiches trouvées
+[2026-07-05 09:08:13] [scraper.immo] INFO [PAGE 089] 2 fiches trouvées
+[2026-07-05 09:08:16] [scraper.immo] INFO [PAGE 090] 0 fiches trouvées
+[2026-07-05 09:08:16] [scraper.immo] INFO [STOP] Plus de résultats page 90
+[2026-07-05 09:08:16] [scraper.immo] INFO Fin scraper 'immo' : inserted=1, updated=73, unchanged=808, stale=0
+[2026-07-05 09:08:16] [scraper.immo] INFO CSV exporté : exports/immo/base_prospection_immomatin.csv (882 lignes)
+[2026-07-05 09:08:16] [scraper.immo] INFO JSONL exporté : exports/immo/base_prospection_immomatin.jsonl (882 lignes)
+[2026-07-05 09:08:17] [scraper.immo] INFO XLSX exporté : exports/immo/base_prospection_immomatin.xlsx (882 lignes)
