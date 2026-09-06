@@ -4184,3 +4184,21 @@
 [2026-08-30 11:07:35] [scraper.notaires] INFO CSV exporté : exports/notaires/annuaire_notaires_france.csv (242 lignes)
 [2026-08-30 11:07:35] [scraper.notaires] INFO JSONL exporté : exports/notaires/annuaire_notaires_france.jsonl (242 lignes)
 [2026-08-30 11:07:36] [scraper.notaires] INFO XLSX exporté : exports/notaires/annuaire_notaires_france.xlsx (242 lignes)
+[2026-09-06 09:55:53] [scraper.notaires] INFO ======================================================================
+[2026-09-06 09:55:53] [scraper.notaires] INFO Démarrage scraper 'notaires' (mode=update, test=False)
+[2026-09-06 09:55:53] [scraper.notaires] INFO DB : /home/runner/work/RAPS-Prospection/RAPS-Prospection/data/notaires.db
+[2026-09-06 09:55:53] [scraper.notaires] INFO run_id = b242cd0239e44eb1
+[2026-09-06 09:55:53] [scraper.notaires] INFO ============================================================
+[2026-09-06 09:55:53] [scraper.notaires] INFO ETAPE 1 : CRAWL ANNUAIRE (Rhone 69)
+[2026-09-06 09:55:53] [scraper.notaires] INFO Start URLs    : 2
+[2026-09-06 09:55:53] [scraper.notaires] INFO ============================================================
+[2026-09-06 09:55:54] [scraper.notaires] INFO [CRAWL] pages=1 | queue=1 | offices=0 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/rhone
+[2026-09-06 09:55:54] [scraper.notaires] INFO [CRAWL] pages=2 | queue=0 | offices=0 | +annuaire=0 | +offices=0 | url=https://www.notaires.fr/fr/annuaire/auvergne-rhone-alpes/metropole-de-lyon
+[2026-09-06 09:55:55] [scraper.notaires] INFO [CRAWL FINI] offices trouves=0
+[2026-09-06 09:55:55] [scraper.notaires] INFO ============================================================
+[2026-09-06 09:55:55] [scraper.notaires] INFO ETAPE 2 : SCRAPING OFFICES (0 a scraper)
+[2026-09-06 09:55:55] [scraper.notaires] INFO ============================================================
+[2026-09-06 09:55:55] [scraper.notaires] INFO Fin scraper 'notaires' : inserted=0, updated=0, unchanged=0, stale=251
+[2026-09-06 09:55:55] [scraper.notaires] INFO CSV exporté : exports/notaires/annuaire_notaires_france.csv (0 lignes)
+[2026-09-06 09:55:55] [scraper.notaires] INFO JSONL exporté : exports/notaires/annuaire_notaires_france.jsonl (0 lignes)
+[2026-09-06 09:55:55] [scraper.notaires] INFO XLSX exporté : exports/notaires/annuaire_notaires_france.xlsx (0 lignes)
