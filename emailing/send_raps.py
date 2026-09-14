@@ -87,7 +87,7 @@ DAY_SLOTS = {
 # Tolerance : GitHub Actions declenche souvent avec 5 a 30 min de retard.
 SLOT_TOLERANCE_MIN = 20
 
-DAILY_LIMIT = int(os.getenv("DAILY_LIMIT") or 30)
+DAILY_LIMIT = int(os.getenv("DAILY_LIMIT") or 10)
 MAX_PER_RUN = int(os.getenv("MAX_PER_RUN") or 15)
 PAUSE_MIN = int(os.getenv("PAUSE_MIN") or 40)
 PAUSE_MAX = int(os.getenv("PAUSE_MAX") or 110)
