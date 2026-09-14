@@ -161,8 +161,13 @@ def _subject(vertical: str) -> str:
     return "Débarras et remise en état de biens - secteur lyonnais"
 
 
-def _salutation(vertical: str) -> str:
-    return "Cher Maître," if vertical == "notaires" else "Bonjour,"
+def _salutation(vertical: str, nom: str = "") -> str:
+    """Le nom vient de la colonne contact_name, remplie par extract_names.py.
+    Vide = formule sans nom, toujours correcte."""
+    nom = (nom or "").strip()
+    if vertical == "notaires":
+        return f"Cher Maître {nom}," if nom else "Cher Maître,"
+    return "Bonjour,"
 
 
 def _followup_paragraphs(vertical: str) -> list[str]:
@@ -216,10 +221,10 @@ def _body_paragraphs(vertical: str, relance: bool = False) -> list[str]:
     ]
 
 
-def build_text(vertical: str, relance: bool = False) -> str:
+def build_text(vertical: str, relance: bool = False, nom: str = "") -> str:
     corps = "\n\n".join(_body_paragraphs(vertical, relance))
     return (
-        f"{_salutation(vertical)}\n\n{corps}\n\n"
+        f"{_salutation(vertical, nom)}\n\n{corps}\n\n"
         f"Raphaël AUDRAS\n"
         f"R.A.P.S SERVICES\n"
         f"{ADRESSE_1}\n{ADRESSE_2}\n"
@@ -230,7 +235,8 @@ def build_text(vertical: str, relance: bool = False) -> str:
     )
 
 
-def build_html(vertical: str, logo_src: str = "cid:rapslogo", relance: bool = False) -> str:
+def build_html(vertical: str, logo_src: str = "cid:rapslogo", relance: bool = False,
+               nom: str = "") -> str:
     font = "Arial,Helvetica,sans-serif"
     paras = "".join(
         f'<p style="margin:0 0 18px 0;">{p}</p>' for p in _body_paragraphs(vertical, relance)
@@ -245,7 +251,7 @@ def build_html(vertical: str, logo_src: str = "cid:rapslogo", relance: bool = Fa
        style="max-width:560px;width:100%;">
 
   <tr><td style="font-family:{font};font-size:15px;line-height:1.65;color:{C_TEXT};">
-    <p style="margin:0 0 18px 0;">{_salutation(vertical)}</p>
+    <p style="margin:0 0 18px 0;">{_salutation(vertical, nom)}</p>
     {paras}
   </td></tr>
 
@@ -278,7 +284,7 @@ def build_html(vertical: str, logo_src: str = "cid:rapslogo", relance: bool = Fa
 
 
 def build_message(vertical: str, to_email: str, relance: bool = False,
-                  in_reply_to: str = "") -> MIMEMultipart:
+                  in_reply_to: str = "", nom: str = "") -> MIMEMultipart:
     root = MIMEMultipart("related")
     sujet = _subject(vertical)
     root["Subject"] = f"Re: {sujet}" if relance else sujet
@@ -294,8 +300,8 @@ def build_message(vertical: str, to_email: str, relance: bool = False,
         root["References"] = in_reply_to
 
     alt = MIMEMultipart("alternative")
-    alt.attach(MIMEText(build_text(vertical, relance), "plain", "utf-8"))
-    alt.attach(MIMEText(build_html(vertical, "cid:rapslogo", relance), "html", "utf-8"))
+    alt.attach(MIMEText(build_text(vertical, relance, nom), "plain", "utf-8"))
+    alt.attach(MIMEText(build_html(vertical, "cid:rapslogo", relance, nom), "html", "utf-8"))
     root.attach(alt)
 
     try:
@@ -439,8 +445,9 @@ def run_preview() -> int:
         logo_src = f"data:image/png;base64,{b64}"
     except FileNotFoundError:
         logo_src = ""
-    for v, name in (("notaires", "preview_notaires.html"), ("immo", "preview_immo.html")):
-        (PREVIEW_DIR / name).write_text(build_html(v, logo_src), encoding="utf-8")
+    for v, name, nom in (("notaires", "preview_notaires.html", "Baret"),
+                         ("immo", "preview_immo.html", "")):
+        (PREVIEW_DIR / name).write_text(build_html(v, logo_src, False, nom), encoding="utf-8")
         print(f"  ✅ {name}")
         print(f"     objet : {_subject(v)}")
     print("\n  Ouvre ces fichiers dans un navigateur. Rien n'a été envoyé.")
@@ -507,7 +514,8 @@ def run_mass() -> int:
                 continue
             try:
                 msg = build_message(vertical, email, relance=relance,
-                                    in_reply_to=_safe(c.get("message_id")))
+                                    in_reply_to=_safe(c.get("message_id")),
+                                    nom=_safe(c.get("contact_name")))
                 if not DRY_RUN:
                     server.sendmail(FROM_EMAIL, [email], msg.as_string())
                 if relance:
