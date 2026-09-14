@@ -92,6 +92,12 @@ MAX_PER_RUN = int(os.getenv("MAX_PER_RUN") or 15)
 PAUSE_MIN = int(os.getenv("PAUSE_MIN") or 40)
 PAUSE_MAX = int(os.getenv("PAUSE_MAX") or 110)
 
+# Relance : delai en jours calendaires apres le 1er envoi.
+# Une seule relance par contact, jamais deux.
+FOLLOWUP_DAYS = int(os.getenv("FOLLOWUP_DAYS") or 10)
+FOLLOWUP_ON = os.getenv("FOLLOWUP_ON", "true").strip().lower() in {"1", "true", "yes"}
+SHUFFLE_SEED = int(os.getenv("SHUFFLE_SEED") or 20260914)
+
 SEND_MODE = os.getenv("SEND_MODE", "PREVIEW").strip().upper()
 VERTICAL = os.getenv("VERTICAL", "notaires").strip().lower()
 DRY_RUN = os.getenv("DRY_RUN", "false").strip().lower() in {"1", "true", "yes"}
@@ -159,7 +165,30 @@ def _salutation(vertical: str) -> str:
     return "Cher Maître," if vertical == "notaires" else "Bonjour,"
 
 
-def _body_paragraphs(vertical: str) -> list[str]:
+def _followup_paragraphs(vertical: str) -> list[str]:
+    """Relance : courte, sans reproche, une seule fois."""
+    if vertical == "notaires":
+        return [
+            "Je me permets de revenir vers vous concernant mon message précédent.",
+            "Si un dossier de succession nécessite le débarras d’un logement, nous "
+            "intervenons sur tout le secteur lyonnais et établissons un devis "
+            "gratuit sous 48 heures.",
+            "Je reste à votre disposition,",
+            "Sincères salutations,",
+        ]
+    return [
+        "Je me permets de revenir vers vous concernant mon message précédent.",
+        "Si un bien est à vider ou à remettre en état avant une vente ou une "
+        "location, nous intervenons sur tout le secteur lyonnais et établissons "
+        "un devis gratuit sous 48 heures.",
+        "Je reste à votre disposition,",
+        "Sincères salutations,",
+    ]
+
+
+def _body_paragraphs(vertical: str, relance: bool = False) -> list[str]:
+    if relance:
+        return _followup_paragraphs(vertical)
     if vertical == "notaires":
         return [
             "Conscient que les successions représentent une partie importante de votre "
@@ -187,8 +216,8 @@ def _body_paragraphs(vertical: str) -> list[str]:
     ]
 
 
-def build_text(vertical: str) -> str:
-    corps = "\n\n".join(_body_paragraphs(vertical))
+def build_text(vertical: str, relance: bool = False) -> str:
+    corps = "\n\n".join(_body_paragraphs(vertical, relance))
     return (
         f"{_salutation(vertical)}\n\n{corps}\n\n"
         f"Raphaël AUDRAS\n"
@@ -201,10 +230,10 @@ def build_text(vertical: str) -> str:
     )
 
 
-def build_html(vertical: str, logo_src: str = "cid:rapslogo") -> str:
+def build_html(vertical: str, logo_src: str = "cid:rapslogo", relance: bool = False) -> str:
     font = "Arial,Helvetica,sans-serif"
     paras = "".join(
-        f'<p style="margin:0 0 18px 0;">{p}</p>' for p in _body_paragraphs(vertical)
+        f'<p style="margin:0 0 18px 0;">{p}</p>' for p in _body_paragraphs(vertical, relance)
     )
     return f"""<!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8">
@@ -248,18 +277,25 @@ def build_html(vertical: str, logo_src: str = "cid:rapslogo") -> str:
 </td></tr></table></body></html>"""
 
 
-def build_message(vertical: str, to_email: str) -> MIMEMultipart:
+def build_message(vertical: str, to_email: str, relance: bool = False,
+                  in_reply_to: str = "") -> MIMEMultipart:
     root = MIMEMultipart("related")
-    root["Subject"] = _subject(vertical)
+    sujet = _subject(vertical)
+    root["Subject"] = f"Re: {sujet}" if relance else sujet
     root["From"] = formataddr((FROM_NAME, FROM_EMAIL))
     root["To"] = to_email
     root["Reply-To"] = REPLY_TO
     root["Message-ID"] = make_msgid(domain=FROM_EMAIL.split("@")[-1])
     root["List-Unsubscribe"] = f"<mailto:{REPLY_TO}?subject=STOP>"
+    # la relance se raccroche au fil d'origine : le destinataire
+    # retrouve le 1er message juste en dessous
+    if relance and in_reply_to:
+        root["In-Reply-To"] = in_reply_to
+        root["References"] = in_reply_to
 
     alt = MIMEMultipart("alternative")
-    alt.attach(MIMEText(build_text(vertical), "plain", "utf-8"))
-    alt.attach(MIMEText(build_html(vertical), "html", "utf-8"))
+    alt.attach(MIMEText(build_text(vertical, relance), "plain", "utf-8"))
+    alt.attach(MIMEText(build_html(vertical, "cid:rapslogo", relance), "html", "utf-8"))
     root.attach(alt)
 
     try:
@@ -314,8 +350,51 @@ def pick_pending(rows: list[dict], limit: int) -> list[dict]:
         if VERTICAL != "all" and _safe(r.get("vertical")).lower() != VERTICAL:
             continue
         out.append(r)
-    out.sort(key=lambda r: -int(_safe(r.get("score_source_rank")) or 0))
+    # Melange a graine fixe : les bureaux d'une meme etude ne tombent
+    # pas le meme matin, et l'ordre reste reproductible d'un run a l'autre.
+    random.Random(SHUFFLE_SEED).shuffle(out)
     return out[:limit]
+
+
+def pick_followups(rows: list[dict], limit: int) -> list[dict]:
+    """Contacts a relancer : envoyes il y a assez longtemps, sans reponse,
+    sans rebond, et jamais relances."""
+    if limit <= 0 or not FOLLOWUP_ON:
+        return []
+    now = datetime.now(timezone.utc)
+    out = []
+    for r in rows:
+        if _safe(r.get("send_status")).lower() != "sent":
+            continue
+        if _safe(r.get("replied")).lower() == "true":
+            continue
+        if _safe(r.get("bounced")).lower() == "true":
+            continue
+        if _safe(r.get("followup_at")):
+            continue
+        if VERTICAL != "all" and _safe(r.get("vertical")).lower() != VERTICAL:
+            continue
+        raw = _safe(r.get("sent_at"))
+        if not raw:
+            continue
+        try:
+            dt = datetime.fromisoformat(raw)
+        except ValueError:
+            continue
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        if (now - dt).days >= FOLLOWUP_DAYS:
+            out.append(r)
+    out.sort(key=lambda r: _safe(r.get("sent_at")))
+    return out[:limit]
+
+
+def mark_followup(row: dict, error: str = "") -> None:
+    now = datetime.now(timezone.utc).isoformat()
+    row["followup_at"] = now
+    row["updated_at"] = now
+    if error:
+        row["last_error"] = error[:200]
 
 
 def mark(row: dict, subject: str, status: str = "sent", error: str = "") -> None:
@@ -328,6 +407,11 @@ def mark(row: dict, subject: str, status: str = "sent", error: str = "") -> None
     row["last_error"] = error[:200]
     row["last_subject"] = subject
     row["updated_at"] = now
+
+
+def _store_msgid(row: dict, msg: MIMEMultipart) -> None:
+    if not _safe(row.get("message_id")):
+        row["message_id"] = msg.get("Message-ID", "")
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -394,35 +478,53 @@ def run_mass() -> int:
         print("  Quota du créneau déjà atteint.")
         return 0
 
-    contacts = pick_pending(rows, reste)
+    # Les relances passent en premier : elles ont une date d'echeance,
+    # les nouveaux contacts non.
+    relances = pick_followups(rows, reste)
+    nouveaux = pick_pending(rows, reste - len(relances))
+    lot = [(r, True) for r in relances] + [(r, False) for r in nouveaux]
+
     total_pending = sum(1 for r in rows if _safe(r.get("send_status")).lower() == "pending")
-    if not contacts:
-        print(f"  Aucun contact 'pending' en '{VERTICAL}'. Campagne terminée.")
+    total_relances = len(pick_followups(rows, 10_000))
+    if not lot:
+        print(f"  Rien à envoyer en '{VERTICAL}' : "
+              f"{total_pending} en attente, {total_relances} relances dues.")
         return 0
 
-    print(f"  Ce lot : {len(contacts)} mails, reste {total_pending} en attente\n")
+    print(f"  Ce lot : {len(nouveaux)} nouveaux + {len(relances)} relances")
+    print(f"  Restant : {total_pending} à contacter, {total_relances} à relancer\n")
+
     sent = err = 0
     server = None if DRY_RUN else _connect()
     try:
-        for i, c in enumerate(contacts, 1):
+        for i, (c, relance) in enumerate(lot, 1):
             email = _safe(c.get("email"))
             vertical = _safe(c.get("vertical")).lower() or "notaires"
+            tag = "relance " if relance else "        "
             if not _is_valid_email(email):
                 mark(c, "", status="error", error="email invalide")
                 err += 1
                 continue
             try:
+                msg = build_message(vertical, email, relance=relance,
+                                    in_reply_to=_safe(c.get("message_id")))
                 if not DRY_RUN:
-                    server.sendmail(FROM_EMAIL, [email],
-                                    build_message(vertical, email).as_string())
-                mark(c, _subject(vertical), status="sent")
+                    server.sendmail(FROM_EMAIL, [email], msg.as_string())
+                if relance:
+                    mark_followup(c)
+                else:
+                    mark(c, _subject(vertical), status="sent")
+                    _store_msgid(c, msg)
                 sent += 1
-                print(f"  [{i}/{len(contacts)}] ✅ {email}")
+                print(f"  [{i}/{len(lot)}] ✅ {tag}{email}")
             except Exception as exc:
-                mark(c, "", status="error", error=str(exc))
+                if relance:
+                    mark_followup(c, error=str(exc))
+                else:
+                    mark(c, "", status="error", error=str(exc))
                 err += 1
-                print(f"  [{i}/{len(contacts)}] ❌ {email} · {exc}")
-            if i < len(contacts):
+                print(f"  [{i}/{len(lot)}] ❌ {tag}{email} · {exc}")
+            if i < len(lot):
                 time.sleep(random.uniform(PAUSE_MIN, PAUSE_MAX))
     finally:
         if server is not None:
