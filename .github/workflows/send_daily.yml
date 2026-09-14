@@ -56,7 +56,7 @@ jobs:
         env:
           SEND_MODE: "MASS"
           VERTICAL: ${{ vars.VERTICAL || 'all' }}
-          DAILY_LIMIT: ${{ vars.DAILY_LIMIT || '20' }}
+          DAILY_LIMIT: ${{ vars.DAILY_LIMIT || '10' }}
           FOLLOWUP_DAYS: ${{ vars.FOLLOWUP_DAYS || '10' }}
           MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '10' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
