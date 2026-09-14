@@ -1,20 +1,31 @@
-name: "📧 RAPS - Envoi quotidien"
+name: "RAPS - Envoi cadence"
 
 on:
   schedule:
-    - cron: "50 5 * * 1-6"
+    # Heures UTC. Chaque ligne couvre l'heure d'ete ET l'heure d'hiver,
+    # le script verifie l'heure de Paris et sort si ce n'est pas le creneau.
+    - cron: "45 6,7 * * 1-5"      # 08h45 Paris
+    - cron: "15 8,9 * * 1-5"      # 10h15 Paris
+    - cron: "15 12,13 * * 1-5"    # 14h15 Paris
+    - cron: "0 14,15 * * 1-5"     # 16h00 Paris
   workflow_dispatch:
     inputs:
-      daily_limit:
-        description: "Emails à envoyer (défaut 80)"
-        required: false
-        default: "80"
       dry_run:
-        description: "Dry run ?"
+        description: "Simuler sans envoyer ?"
+        required: false
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+      ignore_schedule:
+        description: "Forcer hors creneau ?"
         required: false
         default: "false"
         type: choice
         options: ["false", "true"]
+      max_per_run:
+        description: "Plafond pour ce lot"
+        required: false
+        default: "5"
 
 permissions:
   contents: write
@@ -26,28 +37,35 @@ concurrency:
 jobs:
   send:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Envoi MASS
+
+      - name: Envoi du lot
         env:
           SEND_MODE: "MASS"
-          DAILY_LIMIT: ${{ github.event.inputs.daily_limit || '80' }}
+          VERTICAL: ${{ vars.VERTICAL || 'notaires' }}
+          DAILY_LIMIT: ${{ vars.DAILY_LIMIT || '30' }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '15' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          IGNORE_SCHEDULE: ${{ github.event.inputs.ignore_schedule || 'false' }}
           SMTP_LOGIN: ${{ secrets.SMTP_LOGIN }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: python emailing/send_raps.py
-      - name: Commit tracking
-        if: ${{ github.event.inputs.dry_run != 'true' }}
+
+      # always() : si l'envoi casse au milieu du lot, on garde quand meme
+      # la trace de ceux qui sont deja partis (sinon on les remaile).
+      - name: Sauvegarde du suivi
+        if: ${{ always() && github.event.inputs.dry_run != 'true' }}
         run: |
           git config user.name  "RAPS Bot"
           git config user.email "bot@raps-services-nettoyage.fr"
           git add emailing/data/raps_contacts_master.csv 2>/dev/null || true
           git diff --cached --quiet && echo "Rien a committer" && exit 0
-          git commit -m "envoi $(date -u +%Y-%m-%d)"
+          git commit -m "envoi $(date -u +%Y-%m-%d\ %H:%M)"
           for i in 1 2 3; do
             git push origin main && exit 0
             git pull --rebase --autostash origin main || exit 1
