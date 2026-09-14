@@ -230,8 +230,8 @@ def build_text(vertical: str, relance: bool = False, nom: str = "") -> str:
         f"{ADRESSE_1}\n{ADRESSE_2}\n"
         f"Tél : {TEL_1} - {TEL_2}\n"
         f"Mail : {FROM_EMAIL}\n{SITE_LABEL}\n\n"
-        f"Message adressé à titre professionnel. "
-        f"Pour ne plus être contacté, répondez STOP à cet email."
+        f"Si vous ne souhaitez pas recevoir d’autre message de ma part, "
+        f"dites-le-moi simplement en réponse à ce mail."
     )
 
 
@@ -275,8 +275,8 @@ def build_html(vertical: str, logo_src: str = "cid:rapslogo", relance: bool = Fa
 
   <tr><td style="padding-top:22px;border-top:1px solid #e8e8e8;
                  font-family:{font};font-size:11px;line-height:1.5;color:{C_MUTED};">
-    Message adressé à titre professionnel.
-    Pour ne plus être contacté, répondez « STOP » à cet email.
+    Si vous ne souhaitez pas recevoir d’autre message de ma part,
+    dites-le-moi simplement en réponse à ce mail.
   </td></tr>
 
 </table>
@@ -292,7 +292,6 @@ def build_message(vertical: str, to_email: str, relance: bool = False,
     root["To"] = to_email
     root["Reply-To"] = REPLY_TO
     root["Message-ID"] = make_msgid(domain=FROM_EMAIL.split("@")[-1])
-    root["List-Unsubscribe"] = f"<mailto:{REPLY_TO}?subject=STOP>"
     # la relance se raccroche au fil d'origine : le destinataire
     # retrouve le 1er message juste en dessous
     if relance and in_reply_to:
