@@ -44,12 +44,21 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Qui a repondu ? Qui a rebondi ? Ces contacts ne seront pas relances.
+      - name: Lecture des reponses
+        continue-on-error: true
+        env:
+          SMTP_LOGIN: ${{ secrets.SMTP_LOGIN }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: python emailing/sync_replies.py
+
       - name: Envoi du lot
         env:
           SEND_MODE: "MASS"
-          VERTICAL: ${{ vars.VERTICAL || 'notaires' }}
-          DAILY_LIMIT: ${{ vars.DAILY_LIMIT || '30' }}
-          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '15' }}
+          VERTICAL: ${{ vars.VERTICAL || 'all' }}
+          DAILY_LIMIT: ${{ vars.DAILY_LIMIT || '20' }}
+          FOLLOWUP_DAYS: ${{ vars.FOLLOWUP_DAYS || '10' }}
+          MAX_PER_RUN: ${{ github.event.inputs.max_per_run || '10' }}
           DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
           IGNORE_SCHEDULE: ${{ github.event.inputs.ignore_schedule || 'false' }}
           SMTP_LOGIN: ${{ secrets.SMTP_LOGIN }}
