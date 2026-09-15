@@ -50,6 +50,7 @@ jobs:
         env:
           SMTP_LOGIN: ${{ secrets.SMTP_LOGIN }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          LOOKBACK_DAYS: "7"
         run: python emailing/sync_replies.py
 
       - name: Envoi du lot
